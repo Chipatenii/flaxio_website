@@ -1,0 +1,1565 @@
+<!--
+  FLAXIO INVESTMENT LIMITED — corporate website (single file)
+  Content sourced from the official company profile.
+  Design language inspired by the First Quantum Minerals site.
+
+  CUSTOMISE
+  ---------
+  - "Image" cells (.media) are CSS-generated textures — swap for real photos.
+  - Contact form is front-end only — wire the send button to your backend/email.
+  - The header/footer logos are an SVG recreation of the Flaxio mark;
+    replace with the real logo image for best crispness.
+  - Brand colours live in the :root CSS variables ("BRAND TOKENS").
+-->
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Flaxio Investment Limited — Mining &amp; Industrial Supply, Kitwe Zambia</title>
+<meta name="description" content="Flaxio Investment Limited is a Zambian-owned supplier of sulphuric acid, mining chemicals, drilling and electrical equipment, PPE, industrial valves, construction materials and hazardous waste management — based in Kitwe, Copperbelt.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Cinzel:wght@500;600;700&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   BRAND TOKENS
+   ============================================================ */
+:root{
+  --font-display:'Bricolage Grotesque', sans-serif;
+  --font-body:'Hanken Grotesk', sans-serif;
+  --font-serif:'Cinzel', serif;
+
+  /* light theme — sampled from the Flaxio logo (navy + gold) */
+  --bg:#f4f5f8;
+  --bg-alt:#ffffff;
+  --surface:#e7e9f1;
+  --ink:#141a2b;
+  --ink-soft:#4a5168;
+  --ink-faint:#838999;
+  --primary:#1c2e54;        /* Flaxio navy */
+  --primary-deep:#11203f;
+  --primary-tint:#e2e5ee;
+  --accent:#b8923f;         /* Flaxio gold */
+  --accent-soft:#cda85a;
+  --line:rgba(20,26,43,.13);
+  --line-strong:rgba(20,26,43,.26);
+  --shadow:0 30px 60px -28px rgba(17,32,63,.4);
+  --header-h:78px;
+  --maxw:1240px;
+}
+html[data-theme="dark"]{
+  --bg:#0c1120;
+  --bg-alt:#121a2e;
+  --surface:#1a233c;
+  --ink:#e9ebf1;
+  --ink-soft:#aab0c2;
+  --ink-faint:#7a8094;
+  --primary:#1c2e54;
+  --primary-deep:#0a1124;
+  --primary-tint:#1a233c;
+  --accent:#cda85a;
+  --accent-soft:#ddbd77;
+  --line:rgba(233,235,241,.13);
+  --line-strong:rgba(233,235,241,.26);
+  --shadow:0 30px 60px -30px rgba(0,0,0,.75);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--font-body);
+  background:var(--bg);
+  color:var(--ink);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+  transition:background .4s ease,color .4s ease;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+
+body::after{
+  content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;
+  opacity:.5;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ============================================================
+   LAYOUT HELPERS
+   ============================================================ */
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+.section{padding:120px 0}
+.section--tight{padding:84px 0}
+.eyebrow{
+  font-size:.74rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--accent);display:flex;align-items:center;gap:12px;margin-bottom:22px;
+}
+.eyebrow::before{content:"";width:34px;height:1.5px;background:var(--accent);display:inline-block}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:600;line-height:1.04;letter-spacing:-.02em}
+.h-xl{font-size:clamp(2.9rem,6.4vw,5.4rem)}
+.h-lg{font-size:clamp(2.1rem,4.4vw,3.5rem)}
+.h-md{font-size:clamp(1.6rem,2.6vw,2.3rem)}
+.lede{font-size:clamp(1.05rem,1.5vw,1.32rem);color:var(--ink-soft);max-width:62ch}
+
+.btn{
+  display:inline-flex;align-items:center;gap:11px;font-weight:600;font-size:.95rem;
+  padding:15px 28px;border-radius:50px;transition:.32s cubic-bezier(.2,.7,.3,1);
+  letter-spacing:.01em;
+}
+.btn svg{transition:transform .32s cubic-bezier(.2,.7,.3,1)}
+.btn:hover svg{transform:translateX(5px)}
+.btn--solid{background:var(--primary);color:#f4f5f8}
+.btn--solid:hover{background:var(--primary-deep);transform:translateY(-2px)}
+.btn--accent{background:var(--accent);color:#fff}
+.btn--accent:hover{background:var(--accent-soft);transform:translateY(-2px)}
+.btn--ghost{border:1.5px solid var(--line-strong);color:var(--ink)}
+.btn--ghost:hover{border-color:var(--ink);background:var(--ink);color:var(--bg)}
+.btn--light{background:#f4f5f8;color:var(--primary-deep)}
+.btn--light:hover{transform:translateY(-2px);background:#fff}
+
+.txt-link{
+  display:inline-flex;align-items:center;gap:9px;font-weight:600;color:var(--accent);
+  font-size:.96rem;border-bottom:1.5px solid transparent;padding-bottom:3px;transition:.25s;
+}
+.txt-link svg{transition:transform .25s}
+.txt-link:hover{border-color:var(--accent)}
+.txt-link:hover svg{transform:translateX(4px)}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.site-header{
+  position:fixed;top:0;left:0;right:0;z-index:1000;height:var(--header-h);
+  display:flex;align-items:center;
+  background:color-mix(in srgb,var(--bg) 86%,transparent);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid transparent;
+  transition:height .3s ease,background .3s ease,border-color .3s ease;
+}
+.site-header.scrolled{height:64px;border-color:var(--line)}
+.header-inner{display:flex;align-items:center;justify-content:space-between;width:100%}
+.brand{display:flex;align-items:center;gap:13px;font-family:var(--font-serif);
+  font-weight:600;font-size:1.15rem;letter-spacing:.085em}
+.brand-mark{width:44px;height:auto;flex:none}
+.brand small{display:block;font-family:var(--font-body);font-weight:500;
+  font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-faint)}
+
+.nav{display:flex;align-items:center;gap:6px}
+.nav a[data-nav]{
+  position:relative;padding:9px 16px;font-size:.93rem;font-weight:500;
+  color:var(--ink-soft);border-radius:8px;transition:color .2s;
+}
+.nav a[data-nav]::after{
+  content:"";position:absolute;left:16px;right:16px;bottom:4px;height:1.5px;
+  background:var(--accent);transform:scaleX(0);transform-origin:left;
+  transition:transform .28s cubic-bezier(.2,.7,.3,1);
+}
+.nav a[data-nav]:hover{color:var(--ink)}
+.nav a[data-nav].is-current{color:var(--ink);font-weight:600}
+.nav a[data-nav].is-current::after,.nav a[data-nav]:hover::after{transform:scaleX(1)}
+
+.header-actions{display:flex;align-items:center;gap:14px}
+.icon-btn{
+  width:40px;height:40px;border-radius:50%;border:1px solid var(--line);
+  display:flex;align-items:center;justify-content:center;transition:.25s;
+}
+.icon-btn:hover{border-color:var(--ink);background:var(--surface)}
+.icon-btn svg{width:18px;height:18px}
+html[data-theme="light"] .moon{display:block}
+html[data-theme="light"] .sun{display:none}
+html[data-theme="dark"] .moon{display:none}
+html[data-theme="dark"] .sun{display:block}
+
+.burger{display:none;width:42px;height:42px;flex-direction:column;gap:5px;
+  align-items:center;justify-content:center}
+.burger span{width:21px;height:2px;background:var(--ink);transition:.3s;border-radius:2px}
+body.nav-open .burger span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+body.nav-open .burger span:nth-child(2){opacity:0}
+body.nav-open .burger span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* ============================================================
+   PAGE ROUTER
+   ============================================================ */
+.page{display:none}
+.page.is-active{display:block;animation:pageIn .5s ease}
+@keyframes pageIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+main{padding-top:var(--header-h)}
+
+.reveal{opacity:0;transform:translateY(28px);
+  transition:opacity .8s cubic-bezier(.2,.7,.3,1),transform .8s cubic-bezier(.2,.7,.3,1);
+  transition-delay:calc(var(--d,0)*.08s)}
+.reveal.in{opacity:1;transform:none}
+
+/* ============================================================
+   MEDIA / IMAGE CELLS  (replace with real photography)
+   ============================================================ */
+.media{position:relative;border-radius:14px;overflow:hidden;background:var(--surface);
+  min-height:220px;isolation:isolate}
+.media::after{content:"";position:absolute;inset:0;opacity:.4;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E")}
+.media-tag{position:absolute;left:16px;bottom:14px;z-index:2;font-size:.72rem;
+  font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#fff;
+  background:rgba(8,12,20,.5);backdrop-filter:blur(4px);padding:6px 12px;border-radius:30px}
+
+.m-flow{background:
+  radial-gradient(120% 90% at 20% 10%,#3c5694 0%,transparent 60%),
+  linear-gradient(160deg,#26396e,#0f1c3a)}
+.m-flow::before{content:"";position:absolute;inset:0;
+  background:repeating-radial-gradient(circle at 30% 120%,rgba(255,255,255,.08) 0 2px,transparent 2px 26px)}
+.m-grid{background:linear-gradient(150deg,#565d6b,#2a2f3a)}
+.m-grid::before{content:"";position:absolute;inset:0;
+  background:
+   repeating-linear-gradient(0deg,rgba(255,255,255,.09) 0 1px,transparent 1px 30px),
+   repeating-linear-gradient(90deg,rgba(255,255,255,.09) 0 1px,transparent 1px 30px)}
+.m-topo{background:linear-gradient(160deg,#2f447e,#13213f)}
+.m-topo::before{content:"";position:absolute;inset:-40%;
+  background:repeating-radial-gradient(ellipse 60% 40% at 60% 50%,transparent 0 22px,rgba(205,168,90,.16) 22px 24px)}
+.m-earth{background:repeating-linear-gradient(8deg,
+  #2c2417 0 22px,#48391f 22px 40px,#73592f 40px 56px,#b8923f 56px 70px,#5a4626 70px 92px)}
+.m-earth::before{content:"";position:absolute;inset:0;
+  background:radial-gradient(140% 100% at 80% 0%,rgba(0,0,0,.45),transparent 70%)}
+.m-spark{background:
+  radial-gradient(90% 80% at 75% 20%,#d4ad5e 0%,transparent 55%),
+  linear-gradient(150deg,#a07f38,#39301c)}
+.m-deep{background:
+  radial-gradient(100% 90% at 25% 15%,#324f8e 0%,transparent 60%),
+  linear-gradient(155deg,#16264a,#0a1124)}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{position:relative;overflow:hidden;
+  min-height:calc(100svh - var(--header-h));display:flex;align-items:center;
+  background:
+   radial-gradient(60% 70% at 78% 18%,color-mix(in srgb,var(--accent) 22%,transparent),transparent 70%),
+   radial-gradient(70% 80% at 10% 90%,color-mix(in srgb,var(--primary) 30%,transparent),transparent 70%);
+}
+.hero-strata{position:absolute;right:-4%;bottom:-2%;width:min(720px,62vw);
+  z-index:0;opacity:.92;pointer-events:none}
+.hero-dot{position:absolute;border-radius:50%;z-index:0}
+.hero-dot.a{width:14px;height:14px;background:var(--accent);top:24%;left:8%;
+  animation:float 7s ease-in-out infinite}
+.hero-dot.b{width:9px;height:9px;border:2px solid var(--primary);top:60%;left:46%;
+  animation:float 9s ease-in-out infinite reverse}
+@keyframes float{50%{transform:translateY(-22px)}}
+.hero-content{position:relative;z-index:2;max-width:780px}
+.hero h1{margin:14px 0 26px}
+.hero h1 em{font-style:normal;color:var(--accent);
+  font-family:var(--font-display);display:inline-block}
+.hero .lede{margin-bottom:36px}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+.hero-meta{position:absolute;right:28px;bottom:40px;z-index:2;text-align:right;
+  max-width:240px}
+.hero-meta span{display:block;font-size:.74rem;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--ink-faint);margin-bottom:8px}
+.hero-meta p{font-size:.92rem;color:var(--ink-soft)}
+
+.hero .stagger{opacity:0;transform:translateY(26px);
+  animation:rise .9s cubic-bezier(.2,.7,.3,1) forwards}
+.hero .stagger:nth-child(1){animation-delay:.05s}
+.hero .stagger:nth-child(2){animation-delay:.18s}
+.hero .stagger:nth-child(3){animation-delay:.31s}
+.hero .stagger:nth-child(4){animation-delay:.44s}
+@keyframes rise{to{opacity:1;transform:none}}
+
+/* ============================================================
+   STAT STRIP
+   ============================================================ */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.stat{padding:42px 26px;border-right:1px solid var(--line)}
+.stat:last-child{border-right:none}
+.stat .num{font-family:var(--font-display);font-size:clamp(2.4rem,3.6vw,3.4rem);
+  font-weight:600;color:var(--primary);line-height:1}
+html[data-theme="dark"] .stat .num{color:var(--accent)}
+.stat .lbl{margin-top:10px;font-size:.9rem;color:var(--ink-soft)}
+
+/* ============================================================
+   SPLIT / CONTENT BLOCKS
+   ============================================================ */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.split--rev .split-text{order:2}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.grid-2 .media:nth-child(odd){margin-top:34px}
+.split-text p{color:var(--ink-soft);margin-top:18px}
+
+.quote{background:var(--primary);color:#eef0f4;position:relative;overflow:hidden}
+html[data-theme="dark"] .quote{background:var(--primary-deep)}
+.quote::before{content:"";position:absolute;right:-80px;top:-80px;width:340px;height:340px;
+  border-radius:50%;background:color-mix(in srgb,var(--accent) 40%,transparent);filter:blur(20px);opacity:.5}
+.quote .wrap{position:relative}
+.quote blockquote{font-family:var(--font-display);font-weight:500;
+  font-size:clamp(1.6rem,3.3vw,2.9rem);line-height:1.18;letter-spacing:-.02em;
+  max-width:21ch}
+.quote .mark{font-size:5rem;line-height:0;color:var(--accent-soft);
+  font-family:var(--font-display);display:block;height:40px}
+.quote cite{display:block;margin-top:30px;font-style:normal;font-size:.92rem;
+  color:#b9c1cf;letter-spacing:.04em}
+
+/* offering rows */
+.offer{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center;
+  padding:64px 0;border-bottom:1px solid var(--line)}
+.offer:last-child{border-bottom:none}
+.offer--rev .offer-media{order:2}
+.offer .media{min-height:340px}
+.offer-num{font-family:var(--font-display);font-size:.95rem;color:var(--accent);
+  font-weight:600;letter-spacing:.1em}
+.offer h3{margin:14px 0 16px}
+.offer ul{list-style:none;margin-top:20px;display:grid;gap:10px}
+.offer li{display:flex;gap:12px;align-items:flex-start;font-size:.96rem;color:var(--ink-soft)}
+.offer li svg{flex:none;margin-top:4px;color:var(--accent)}
+
+/* sector cards */
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.card{position:relative;border-radius:14px;overflow:hidden;min-height:330px;
+  display:flex;flex-direction:column;justify-content:flex-end;padding:24px;
+  color:#fff;transition:transform .4s cubic-bezier(.2,.7,.3,1)}
+.card::after{content:"";position:absolute;inset:0;z-index:1;
+  background:linear-gradient(180deg,transparent 30%,rgba(8,12,20,.86))}
+.card:hover{transform:translateY(-8px)}
+.card .place{position:relative;z-index:2;font-size:.74rem;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--accent-soft);margin-bottom:8px}
+.card h4{position:relative;z-index:2;font-size:1.3rem}
+.card .arr{position:relative;z-index:2;margin-top:14px;display:flex;align-items:center;
+  gap:8px;font-size:.86rem;font-weight:600;opacity:0;transform:translateY(8px);
+  transition:.3s}
+.card:hover .arr{opacity:1;transform:none}
+
+/* service grid (home) */
+.svc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.svc-card{border:1px solid var(--line);border-radius:14px;padding:26px 24px;
+  background:var(--bg-alt);cursor:pointer;display:flex;flex-direction:column;
+  transition:transform .35s cubic-bezier(.2,.7,.3,1),border-color .25s}
+.svc-card:hover{transform:translateY(-6px);border-color:var(--accent)}
+.svc-ic{width:48px;height:48px;border-radius:12px;background:var(--primary-tint);
+  display:flex;align-items:center;justify-content:center;color:var(--primary);margin-bottom:18px}
+html[data-theme="dark"] .svc-ic{color:var(--accent)}
+.svc-card h4{font-size:1.06rem;margin-bottom:8px}
+.svc-card p{font-size:.9rem;color:var(--ink-soft);flex:1}
+.svc-more{margin-top:16px;font-size:.8rem;font-weight:600;color:var(--accent);
+  display:flex;align-items:center;gap:6px}
+
+/* values / why grid */
+.values{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;
+  background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.value{background:var(--bg);padding:34px 30px;transition:background .25s}
+.value:hover{background:var(--bg-alt)}
+.value .vi{width:46px;height:46px;border-radius:12px;background:var(--primary-tint);
+  display:flex;align-items:center;justify-content:center;margin-bottom:18px;color:var(--primary)}
+html[data-theme="dark"] .value .vi{color:var(--accent)}
+.value h4{font-size:1.14rem;margin-bottom:8px}
+.value p{font-size:.93rem;color:var(--ink-soft)}
+
+/* clients */
+.clients{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.client{border:1px solid var(--line);border-radius:12px;padding:28px 20px;
+  background:var(--bg);display:flex;align-items:center;justify-content:center;
+  text-align:center;min-height:112px;transition:.25s}
+.client:hover{border-color:var(--accent);background:var(--bg-alt);transform:translateY(-4px)}
+.client span{font-family:var(--font-display);font-weight:600;font-size:.98rem;color:var(--ink)}
+
+/* HSE band */
+.hse{background:var(--primary);color:#e9ebf1;position:relative;overflow:hidden}
+html[data-theme="dark"] .hse{background:var(--primary-deep)}
+.hse::before{content:"";position:absolute;left:-90px;bottom:-90px;width:360px;height:360px;
+  border-radius:50%;background:color-mix(in srgb,var(--accent) 38%,transparent);filter:blur(26px);opacity:.45}
+.hse .wrap{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:62px;align-items:center}
+.hse h2{margin:14px 0 16px}
+.hse .lede{color:#b9c1cf}
+.hse-list{display:grid;gap:12px}
+.hse-list li{list-style:none;display:flex;gap:14px;align-items:center;
+  font-size:1rem;padding:15px 18px;background:rgba(255,255,255,.06);border-radius:10px;
+  border:1px solid rgba(255,255,255,.09)}
+.hse-list li svg{flex:none;color:var(--accent-soft)}
+
+/* facts */
+.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;
+  background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.fact{background:var(--bg-alt);padding:28px 24px}
+.fact .fl{font-size:.74rem;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--ink-faint);margin-bottom:9px}
+.fact .fv{font-family:var(--font-display);font-weight:600;font-size:1.12rem;color:var(--ink)}
+
+/* CTA band */
+.cta-band{position:relative;overflow:hidden;color:#eef0f4;
+  background:linear-gradient(135deg,var(--primary-deep),var(--primary))}
+.cta-band .media-bg{position:absolute;inset:0;opacity:.16;
+  background:repeating-linear-gradient(8deg,#000 0 22px,#fff2 22px 44px)}
+.cta-band .wrap{position:relative;display:grid;grid-template-columns:1.4fr 1fr;
+  gap:50px;align-items:center}
+.cta-band h2{margin-bottom:14px}
+.cta-band p{color:#b9c1cf;max-width:46ch}
+.cta-band .btn-col{display:flex;justify-content:flex-end}
+
+/* page header (inner pages) */
+.page-head{position:relative;overflow:hidden;padding:78px 0 84px;
+  background:
+   radial-gradient(60% 90% at 88% 10%,color-mix(in srgb,var(--accent) 16%,transparent),transparent 70%),
+   var(--bg-alt);
+  border-bottom:1px solid var(--line)}
+.page-head .crumb{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-faint);margin-bottom:18px}
+.page-head h1{max-width:16ch}
+.page-head .lede{margin-top:22px}
+
+/* process steps */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.step{border:1px solid var(--line);border-radius:14px;padding:30px 26px;
+  background:var(--bg-alt)}
+.step .sn{font-family:var(--font-display);font-size:2.4rem;font-weight:600;
+  color:var(--primary-tint);line-height:1}
+html[data-theme="dark"] .step .sn{color:var(--surface)}
+.step h4{font-size:1.1rem;margin:10px 0 8px}
+.step p{font-size:.92rem;color:var(--ink-soft)}
+
+/* sector detail */
+.sector-detail{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center;
+  padding:64px 0;border-bottom:1px solid var(--line)}
+.sector-detail:last-child{border-bottom:none}
+.sector-detail--rev .sd-media{order:2}
+.sector-detail .media{min-height:380px}
+.sector-detail .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.tag{font-size:.8rem;font-weight:600;padding:7px 14px;border-radius:30px;
+  background:var(--surface);color:var(--ink-soft)}
+
+/* contact */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px}
+.field{margin-bottom:20px}
+.field label{display:block;font-size:.84rem;font-weight:600;margin-bottom:8px;letter-spacing:.04em}
+.field input,.field textarea,.field select{
+  width:100%;padding:14px 16px;border:1.5px solid var(--line);border-radius:10px;
+  background:var(--bg-alt);color:var(--ink);font-family:inherit;font-size:.96rem;
+  transition:border-color .2s}
+.field input:focus,.field textarea:focus,.field select:focus{
+  outline:none;border-color:var(--accent)}
+.field textarea{resize:vertical;min-height:130px}
+.contact-info{display:grid;gap:8px;align-content:start}
+.ci-row{display:flex;gap:16px;padding:22px 0;border-bottom:1px solid var(--line)}
+.ci-row .ci-ic{width:44px;height:44px;border-radius:10px;flex:none;
+  background:var(--primary-tint);display:flex;align-items:center;justify-content:center;
+  color:var(--primary)}
+html[data-theme="dark"] .ci-row .ci-ic{color:var(--accent)}
+.ci-row h4{font-size:1rem;margin-bottom:3px}
+.ci-row p{font-size:.93rem;color:var(--ink-soft)}
+.form-note{display:none;margin-top:14px;padding:14px 16px;border-radius:10px;
+  background:var(--primary-tint);color:var(--primary);font-size:.92rem;font-weight:600}
+html[data-theme="dark"] .form-note{color:var(--accent)}
+.map-band{height:300px;border-radius:14px;overflow:hidden;margin-top:20px;
+  position:relative;background:linear-gradient(150deg,#2f447e,#13213f)}
+.map-band::before{content:"";position:absolute;inset:0;
+  background:
+   repeating-linear-gradient(0deg,rgba(255,255,255,.08) 0 1px,transparent 1px 44px),
+   repeating-linear-gradient(90deg,rgba(255,255,255,.08) 0 1px,transparent 1px 44px)}
+.map-pin{position:absolute;left:50%;top:50%;transform:translate(-50%,-100%);
+  z-index:2;color:var(--accent-soft)}
+
+/* section heading row */
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;
+  gap:40px;margin-bottom:54px}
+.sec-head .h-lg{max-width:18ch}
+.sec-intro{max-width:60ch;color:var(--ink-soft);margin:-30px 0 46px}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.site-footer{background:var(--primary-deep);color:#c3ccd6;padding:80px 0 34px}
+.foot-top{display:grid;grid-template-columns:1.6fr 1fr 1fr 1.1fr;gap:40px;
+  padding-bottom:54px;border-bottom:1px solid rgba(255,255,255,.1)}
+.foot-brand .brand{color:#f4f5f8;margin-bottom:18px}
+.foot-brand p{font-size:.93rem;max-width:34ch}
+.foot-col h5{color:#f4f5f8;font-family:var(--font-display);font-size:1rem;margin-bottom:18px}
+.foot-col a{display:block;font-size:.92rem;padding:6px 0;color:#9fa8b5;transition:color .2s}
+.foot-col a:hover{color:var(--accent-soft)}
+.foot-bot{display:flex;justify-content:space-between;align-items:center;
+  padding-top:28px;font-size:.84rem;color:#7e8794;flex-wrap:wrap;gap:14px}
+.socials{display:flex;gap:10px}
+.socials a{width:38px;height:38px;border-radius:50%;
+  border:1px solid rgba(255,255,255,.16);display:flex;align-items:center;
+  justify-content:center;transition:.25s}
+.socials a:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media(max-width:1024px){
+  .section{padding:88px 0}
+  .section--tight{padding:72px 0}
+  .split,.offer,.sector-detail,.contact-grid,.cta-band .wrap,.hse .wrap{
+    grid-template-columns:1fr;gap:44px}
+  .offer--rev .offer-media,.sector-detail--rev .sd-media,.split--rev .split-text{order:0}
+  .cards,.values,.steps,.svc-grid,.clients,.facts{grid-template-columns:repeat(2,1fr)}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .stat:nth-child(2){border-right:none}
+  .stat:nth-child(1),.stat:nth-child(2){border-bottom:1px solid var(--line)}
+  .cta-band .btn-col{justify-content:flex-start}
+  .hero-meta{display:none}
+  .offer .media,.sector-detail .media{min-height:320px!important}
+}
+
+/* touch devices (no hover): reveal CTAs that are hover-only on desktop */
+@media(hover:none){
+  .card .arr{opacity:1;transform:none}
+  .svc-card:active,.client:active,.value:active{transform:translateY(-2px)}
+}
+
+@media(max-width:760px){
+  .wrap{padding:0 20px}
+  .section{padding:64px 0}
+  .section--tight{padding:54px 0}
+
+  /* header + slide-down nav */
+  .burger{display:flex}
+  body.nav-open .site-header{height:var(--header-h)}
+  .nav{
+    position:fixed;inset:var(--header-h) 0 auto 0;flex-direction:column;
+    align-items:stretch;background:var(--bg);padding:18px 20px 30px;gap:2px;
+    border-bottom:1px solid var(--line);transform:translateY(-12px);
+    opacity:0;pointer-events:none;transition:.3s;box-shadow:var(--shadow)}
+  body.nav-open .nav{transform:none;opacity:1;pointer-events:auto}
+  .nav a[data-nav]{padding:15px 12px;font-size:1.05rem;border-radius:10px}
+  .nav a[data-nav]::after{display:none}
+  .nav a[data-nav]:hover{background:var(--surface)}
+  .nav .btn{margin-top:10px;justify-content:center}
+  .header-actions{gap:10px}
+  .header-actions .btn-contact{display:none}
+
+  /* hero */
+  .hero{min-height:auto;padding:56px 0 64px}
+  .hero h1{margin:12px 0 20px}
+  .hero .lede{margin-bottom:26px}
+  .hero-cta{flex-direction:column;align-items:stretch;gap:12px}
+  .hero-cta .btn{width:100%;justify-content:center}
+  .hero-strata{width:min(340px,80vw);opacity:.32;right:-12%;bottom:-6%}
+
+  /* single-column layout */
+  .cards,.values,.steps,.svc-grid,.clients,.facts,.grid-2{grid-template-columns:1fr}
+  .grid-2 .media:nth-child(odd){margin-top:0}
+  .grid-2 .media{min-height:200px}
+  .offer .media,.sector-detail .media{min-height:230px!important}
+  .card{min-height:260px}
+  .offer{padding:46px 0}
+  .sector-detail{padding:46px 0}
+  .value{padding:28px 24px}
+
+  /* section + page headings */
+  .sec-head{flex-direction:column;align-items:flex-start;gap:18px;margin-bottom:38px}
+  .sec-intro{margin:-12px 0 30px}
+  .page-head{padding:52px 0 58px}
+
+  /* forms: 16px inputs stop iOS auto-zoom on focus */
+  .field input,.field textarea,.field select{font-size:16px}
+  .contact-info{margin-top:8px}
+
+  /* footer */
+  .foot-top{grid-template-columns:1fr 1fr;gap:30px}
+  .foot-bot{flex-direction:column;align-items:flex-start}
+}
+
+@media(max-width:420px){
+  .wrap{padding:0 16px}
+  .brand{font-size:1.04rem;gap:10px}
+  .brand-mark{width:38px}
+  .brand small{font-size:.54rem}
+  .hero h1{font-size:clamp(2.5rem,11vw,3.2rem)}
+  .stats{grid-template-columns:1fr}
+  .stat{border-right:none;border-bottom:1px solid var(--line);padding:30px 22px}
+  .stat:last-child{border-bottom:none}
+  .foot-top{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- ============================ HEADER ============================ -->
+<header class="site-header" id="header">
+  <div class="wrap header-inner">
+    <a href="#home" data-link class="brand">
+      <svg class="brand-mark" viewBox="0 0 54 46" fill="none">
+        <path d="M3 40 Q25 33 51 7" stroke="var(--accent)" stroke-width="3.4" stroke-linecap="round" fill="none"/>
+        <rect x="37" y="18" width="3.2" height="7" rx="1" fill="var(--accent)"/>
+        <rect x="42" y="13" width="3.2" height="12" rx="1" fill="var(--accent)"/>
+        <rect x="47" y="7" width="3.2" height="18" rx="1" fill="var(--accent)"/>
+        <rect x="6" y="8" width="5.5" height="30" fill="var(--primary)"/>
+        <rect x="6" y="8" width="14" height="5" fill="var(--primary)"/>
+        <rect x="6" y="19.5" width="10" height="4.6" fill="var(--primary)"/>
+        <rect x="25" y="8" width="5.5" height="30" fill="var(--accent)"/>
+        <rect x="20.5" y="8" width="14.5" height="4" fill="var(--accent)"/>
+        <rect x="20.5" y="34" width="14.5" height="4" fill="var(--accent)"/>
+      </svg>
+      <span>FLAXIO<small>Investment Limited</small></span>
+    </a>
+
+    <nav class="nav" id="nav">
+      <a href="#home" data-link data-nav="home">Home</a>
+      <a href="#about" data-link data-nav="about">About</a>
+      <a href="#services" data-link data-nav="services">Services</a>
+      <a href="#sectors" data-link data-nav="sectors">Sectors</a>
+      <a href="#contact" data-link data-nav="contact">Contact</a>
+      <a href="#contact" data-link class="btn btn--solid" id="navCta">Request a quote</a>
+    </nav>
+
+    <div class="header-actions">
+      <button class="icon-btn" id="themeToggle" aria-label="Toggle colour mode">
+        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8Z"/></svg>
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="4.2"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9 17 7M7 17l-2.1 2.1"/></svg>
+      </button>
+      <a href="#contact" data-link class="btn btn--accent btn-contact">Request a quote</a>
+      <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ======================================================================
+     PAGE: HOME
+     ====================================================================== -->
+<section class="page is-active" id="page-home">
+
+  <div class="hero">
+    <svg class="hero-strata" viewBox="0 0 600 460" fill="none">
+      <path d="M0 360c120-90 240-50 340-120s180-120 260-90v310H0Z" fill="var(--primary)" opacity=".9"/>
+      <path d="M80 420c130-70 230-30 330-110s130-90 190-70v220H80Z" fill="var(--accent)" opacity=".85"/>
+      <path d="M180 460c110-50 200-20 270-80s120-70 150-50v130H180Z" fill="var(--primary-deep)"/>
+    </svg>
+    <span class="hero-dot a"></span><span class="hero-dot b"></span>
+    <div class="wrap hero-content">
+      <div class="eyebrow stagger">Mining &amp; industrial supply &middot; Kitwe, Zambia</div>
+      <h1 class="h-xl stagger">We keep Zambian<br><em>industry supplied</em></h1>
+      <p class="lede stagger">Chemicals, equipment, PPE and waste management — delivered reliably
+        to the mining, manufacturing and commercial sectors.</p>
+      <div class="hero-cta stagger">
+        <a href="#services" data-link class="btn btn--solid">
+          Explore our services
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#contact" data-link class="btn btn--ghost">Request a quote</a>
+      </div>
+    </div>
+    <div class="hero-meta">
+      <span>Based in Kitwe, Copperbelt</span>
+      <p>Supplying mines and industry across Zambia and the region.</p>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="stats reveal">
+      <div class="stat"><div class="num">08</div><div class="lbl">Supply &amp; service lines</div></div>
+      <div class="stat"><div class="num">07</div><div class="lbl">Clients across mining &amp; industry</div></div>
+      <div class="stat"><div class="num">03</div><div class="lbl">Core sectors served</div></div>
+      <div class="stat"><div class="num">100%</div><div class="lbl">Zambian-owned &amp; registered</div></div>
+    </div>
+  </div>
+
+  <!-- INTRO -->
+  <div class="section">
+    <div class="wrap split">
+      <div class="split-text reveal">
+        <div class="eyebrow">Who we are</div>
+        <h2 class="h-lg">Reliable industrial<br>solutions, Zambian-owned</h2>
+        <p>Flaxio Investment Limited is a Zambian-owned company committed to delivering
+          reliable industrial solutions to the mining, manufacturing and commercial sectors.</p>
+        <p>We specialise in the supply of sulphuric acid, mining chemicals, drilling and
+          electrical equipment, and hazardous waste management — driven by integrity,
+          operational excellence and a vision to contribute meaningfully to Zambia's
+          industrial and economic growth.</p>
+        <div style="margin-top:30px">
+          <a href="#about" data-link class="txt-link">Learn about Flaxio
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
+      <div class="grid-2 reveal" style="--d:1">
+        <div class="media m-flow"><span class="media-tag">Sulphuric acid</span></div>
+        <div class="media m-spark"><span class="media-tag">Mining chemicals</span></div>
+        <div class="media m-grid"><span class="media-tag">Drilling equipment</span></div>
+        <div class="media m-topo"><span class="media-tag">Waste management</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- QUOTE -->
+  <div class="quote section--tight">
+    <div class="wrap reveal">
+      <span class="mark">&ldquo;</span>
+      <blockquote>Dependable service is how we build lasting industrial partnerships.</blockquote>
+      <cite>— Flaxio Investment Limited</cite>
+    </div>
+  </div>
+
+  <!-- COMMITMENT SPLIT -->
+  <div class="section">
+    <div class="wrap split split--rev">
+      <div class="grid-2 reveal">
+        <div class="media m-deep"><span class="media-tag">Quality assurance</span></div>
+        <div class="media m-grid"><span class="media-tag">Safe handling</span></div>
+        <div class="media m-flow"><span class="media-tag">Timely logistics</span></div>
+        <div class="media m-topo"><span class="media-tag">Compliance</span></div>
+      </div>
+      <div class="split-text reveal" style="--d:1">
+        <div class="eyebrow">Our commitment</div>
+        <h2 class="h-lg">Quality, safety and<br>professionalism — every order</h2>
+        <p>We are dedicated to delivering dependable products and services that meet the
+          highest standards of quality, safety and professionalism.</p>
+        <p>Every client relationship matters. We continuously strive to exceed expectations
+          through efficiency, reliability and innovation.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICES OVERVIEW -->
+  <div class="section" style="background:var(--bg-alt)">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <div class="eyebrow">What we do</div>
+          <h2 class="h-lg">Eight supply &amp;<br>service lines</h2>
+        </div>
+        <a href="#services" data-link class="txt-link">See all services
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+      </div>
+      <div class="svc-grid">
+        <a href="#services" data-link class="svc-card reveal">
+          <div class="svc-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3h6M10 3v6l-5.4 9.3A2 2 0 0 0 6.3 21h11.4a2 2 0 0 0 1.7-2.7L14 9V3"/><path d="M8 14h8"/></svg></div>
+          <h4>Sulphuric Acid Supply</h4>
+          <p>Bulk supply with safe handling, transport and timely delivery.</p>
+          <span class="svc-more">View service →</span>
+        </a>
+        <a href="#services" data-link class="svc-card reveal" style="--d:1">
+          <div class="svc-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3h12M8 3v6l-3.6 7.4A2 2 0 0 0 6.2 19h11.6a2 2 0 0 0 1.8-2.6L16 9V3"/><circle cx="11" cy="14" r="1"/><circle cx="14" cy="16" r="1"/></svg></div>
+          <h4>Mining Chemicals</h4>
+          <p>Reagents, processing chemicals and industrial consumables.</p>
+          <span class="svc-more">View service →</span>
+        </a>
+        <a href="#services" data-link class="svc-card reveal" style="--d:2">
+          <div class="svc-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14M10 11v5M14 11v5"/></svg></div>
+          <h4>Hazardous Waste Management</h4>
+          <p>Collection, transport, safe disposal and site clean-up.</p>
+          <span class="svc-more">View service →</span>
+        </a>
+        <a href="#services" data-link class="svc-card reveal" style="--d:3">
+          <div class="svc-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 5.5a4 4 0 0 1-5.3 5.3L4 16v4h4l5.2-5.2a4 4 0 0 1 5.3-5.3l-3 3-2-.5-.5-2 3-3Z"/></svg></div>
+          <h4>Drilling Equipment</h4>
+          <p>Drilling machines, tools, accessories and consumables.</p>
+          <span class="svc-more">View service →</span>
+        </a>
+        <a href="#services" data-link class="svc-card reveal">
+          <div class="svc-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/></svg></div>
+          <h4>Electrical Equipment</h4>
+          <p>Industrial electrical equipment, cables, fittings and accessories.</p>
+          <span class="svc-more">View service →</span>
+        </a>
+        <a href="#services" data-link class="svc-card reveal" style="--d:1">
+          <div class="svc-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 19h18v-2a9 9 0 0 0-18 0v2ZM10 8V5h4v3"/></svg></div>
+          <h4>PPE Supply</h4>
+          <p>Gloves, masks, protective suits and safety gear.</p>
+          <span class="svc-more">View service →</span>
+        </a>
+        <a href="#services" data-link class="svc-card reveal" style="--d:2">
+          <div class="svc-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="8"/><path d="M12 4v3M12 17v3M4 12h3M17 12h3M12 12l4-3"/></svg></div>
+          <h4>Industrial Valves</h4>
+          <p>Valves for fluid control, pressure and heavy industrial use.</p>
+          <span class="svc-more">View service →</span>
+        </a>
+        <a href="#services" data-link class="svc-card reveal" style="--d:3">
+          <div class="svc-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21V8l9-5 9 5v13M3 21h18M9 21v-6h6v6M3 12h18"/></svg></div>
+          <h4>Construction Materials</h4>
+          <p>Cement, steel, aggregates, roofing materials and paints.</p>
+          <span class="svc-more">View service →</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTORS -->
+  <div class="section">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <div class="eyebrow">Where we work</div>
+          <h2 class="h-lg">Sectors we serve</h2>
+        </div>
+        <a href="#sectors" data-link class="txt-link">Explore all sectors
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+      </div>
+      <div class="cards">
+        <a href="#sectors" data-link class="card m-earth reveal">
+          <span class="place">Copperbelt</span><h4>Mining &amp; mineral processing</h4>
+          <span class="arr">Learn more →</span></a>
+        <a href="#sectors" data-link class="card m-grid reveal" style="--d:1">
+          <span class="place">Industrial</span><h4>Manufacturing &amp; heavy industry</h4>
+          <span class="arr">Learn more →</span></a>
+        <a href="#sectors" data-link class="card m-spark reveal" style="--d:2">
+          <span class="place">Projects</span><h4>Construction &amp; infrastructure</h4>
+          <span class="arr">Learn more →</span></a>
+        <a href="#sectors" data-link class="card m-topo reveal" style="--d:3">
+          <span class="place">Nationwide</span><h4>Commercial &amp; institutional</h4>
+          <span class="arr">Learn more →</span></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHY CHOOSE US -->
+  <div class="section" style="background:var(--bg-alt)">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <div class="eyebrow">Why Flaxio</div>
+          <h2 class="h-lg">Why clients choose us</h2>
+        </div>
+      </div>
+      <div class="values reveal">
+        <div class="value">
+          <div class="vi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg></div>
+          <h4>Reliable service delivery</h4><p>Professional, dependable supply our clients can plan around.</p>
+        </div>
+        <div class="value">
+          <div class="vi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7l8-4Z"/></svg></div>
+          <h4>Safety &amp; compliance</h4><p>A strong commitment to safety and regulatory compliance.</p>
+        </div>
+        <div class="value">
+          <div class="vi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11.5V4h7.5L21 14.5 14.5 21 3 11.5Z"/><circle cx="7.5" cy="7.5" r="1.6"/></svg></div>
+          <h4>Competitive pricing</h4><p>Fair, competitive pricing across every supply line.</p>
+        </div>
+        <div class="value">
+          <div class="vi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h11v10H3zM14 10h4l3 3v4h-7"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg></div>
+          <h4>Timely logistics</h4><p>Dependable supply and logistics support, on schedule.</p>
+        </div>
+        <div class="value">
+          <div class="vi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-8 0v2M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z"/></svg></div>
+          <h4>Customer-centred approach</h4><p>Our clients are at the centre of every decision we make.</p>
+        </div>
+        <div class="value">
+          <div class="vi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="9" r="6"/><path d="M9 14.5 7 22l5-3 5 3-2-7.5"/></svg></div>
+          <h4>Industry experience</h4><p>Real understanding of mining and industrial operations.</p>
+        </div>
+        <div class="value">
+          <div class="vi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12a4 4 0 0 1 4-4h2a4 4 0 0 1 0 8h-1M15 12a4 4 0 0 1-4 4H9a4 4 0 0 1 0-8h1"/></svg></div>
+          <h4>Long-term partnership</h4><p>We invest in lasting business relationships, not one-off deals.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CLIENTS -->
+  <div class="section section--tight">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <div class="eyebrow">Our clients</div>
+          <h2 class="h-lg">Trusted across mining<br>and industry</h2>
+        </div>
+      </div>
+      <p class="sec-intro reveal">We are proud to supply and partner with established mining,
+        industrial and construction organisations across Zambia.</p>
+      <div class="clients reveal">
+        <div class="client"><span>China Copper Mine</span></div>
+        <div class="client"><span>Polytra Zambia Limited</span></div>
+        <div class="client"><span>Scamont &amp; Karlsons Mining Solutions</span></div>
+        <div class="client"><span>CL Mining</span></div>
+        <div class="client"><span>Wheals Construction</span></div>
+        <div class="client"><span>Sunline Supply Chain</span></div>
+        <div class="client"><span>COZ Minerals</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-band section--tight">
+    <div class="media-bg"></div>
+    <div class="wrap reveal">
+      <div>
+        <div class="eyebrow" style="color:var(--accent-soft)">Partner with us</div>
+        <h2 class="h-lg">Let's keep your<br>operation supplied</h2>
+        <p>Tell us what you need. Our team will source it, price it competitively,
+          and deliver it where it matters.</p>
+      </div>
+      <div class="btn-col">
+        <a href="#contact" data-link class="btn btn--light">
+          Request a quote
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ======================================================================
+     PAGE: ABOUT
+     ====================================================================== -->
+<section class="page" id="page-about">
+  <div class="page-head">
+    <div class="wrap">
+      <div class="crumb reveal">Home / About</div>
+      <h1 class="h-xl reveal" style="--d:1">Reliable solutions for<br>Zambia's industry</h1>
+      <p class="lede reveal" style="--d:2">A Zambian-owned industrial supplier built on integrity,
+        safety and operational excellence.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="wrap split">
+      <div class="split-text reveal">
+        <div class="eyebrow">About us</div>
+        <h2 class="h-lg">Built to support Zambian<br>mining and industry</h2>
+        <p>Flaxio Investment Limited is a Zambian-owned company committed to delivering
+          reliable industrial solutions to the mining, manufacturing and commercial sectors.
+          We specialise in the supply of sulphuric acid, mining chemicals, drilling equipment,
+          electrical equipment and hazardous waste management services.</p>
+        <p>With a strong commitment to safety, quality, professionalism and customer
+          satisfaction, we continue to build strategic partnerships across the mining and
+          industrial sectors by providing efficient and dependable service. Our company is
+          driven by integrity, operational excellence and a vision to contribute meaningfully
+          to Zambia's industrial and economic growth.</p>
+      </div>
+      <div class="grid-2 reveal" style="--d:1">
+        <div class="media m-earth"><span class="media-tag">Copperbelt</span></div>
+        <div class="media m-flow"><span class="media-tag">Supply</span></div>
+        <div class="media m-grid"><span class="media-tag">Industry</span></div>
+        <div class="media m-topo"><span class="media-tag">Environment</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MISSION / VISION -->
+  <div class="section section--tight" style="background:var(--bg-alt)">
+    <div class="wrap split">
+      <div class="reveal">
+        <div class="eyebrow">Our mission</div>
+        <h3 class="h-md">To provide high-quality mining chemicals, industrial equipment and
+          environmental management solutions that meet international standards — while ensuring
+          customer satisfaction, safety and sustainable business practices.</h3>
+      </div>
+      <div class="reveal" style="--d:1">
+        <div class="eyebrow">Our vision</div>
+        <h3 class="h-md">To become a leading and trusted industrial solutions provider in
+          Zambia and the Southern African region through excellence, innovation, safety and
+          customer-focused service delivery.</h3>
+      </div>
+    </div>
+  </div>
+
+  <!-- CORE VALUES -->
+  <div class="section">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div><div class="eyebrow">What guides us</div><h2 class="h-lg">Our core values</h2></div>
+      </div>
+      <div class="values reveal">
+        <div class="value">
+          <div class="vi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M5 21h14M12 6 4.5 8.5M12 6l7.5 2.5M4.5 8.5 2 14a3 3 0 0 0 5 0L4.5 8.5Zm15 0L17 14a3 3 0 0 0 5 0l-2.5-5.5Z"/></svg></div>
+          <h4>Integrity &amp; Transparency</h4><p>We conduct our business with honesty, accountability and transparency.</p>
+        </div>
+        <div class="value">
+          <div class="vi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 12h18"/></svg></div>
+          <h4>Professionalism</h4><p>We maintain high standards in every aspect of our work.</p>
+        </div>
+        <div class="value">
+          <div class="vi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7l8-4Z"/><path d="M9 12l2 2 4-4"/></svg></div>
+          <h4>Safety First</h4><p>Safety is a priority in all our operations and project activities.</p>
+        </div>
+        <div class="value">
+          <div class="vi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg></div>
+          <h4>Reliability</h4><p>We deliver dependable products and services clients can trust.</p>
+        </div>
+        <div class="value">
+          <div class="vi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21C7 17 4 13.5 4 9a5 5 0 0 1 8-4 5 5 0 0 1 8 4c0 4.5-3 8-8 12Z"/></svg></div>
+          <h4>Customer Satisfaction</h4><p>Our clients are at the centre of everything we do.</p>
+        </div>
+        <div class="value">
+          <div class="vi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.4 1 2.5h6c0-1.1.3-1.8 1-2.5A6 6 0 0 0 12 3Z"/></svg></div>
+          <h4>Innovation &amp; Growth</h4><p>Growth comes through learning, adaptability and forward-thinking solutions.</p>
+        </div>
+        <div class="value">
+          <div class="vi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20c0-8 6-14 16-14 0 10-6 16-14 16-1 0-2-1-2-2Z"/><path d="M6 19c4-6 8-9 12-10"/></svg></div>
+          <h4>Environmental Responsibility</h4><p>We support sustainable development through environmentally responsible practices.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HSE BAND -->
+  <div class="hse section--tight">
+    <div class="wrap">
+      <div class="reveal">
+        <div class="eyebrow" style="color:var(--accent-soft)">Health, Safety &amp; Environment</div>
+        <h2 class="h-lg">HSE is built into<br>how we operate</h2>
+        <p class="lede">Flaxio Investment Limited prioritises health, safety and environmental
+          responsibility in all operations — safe working practices, responsible chemical
+          handling and environmentally sustainable business operations.</p>
+      </div>
+      <ul class="hse-list reveal" style="--d:1">
+        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>Compliance with environmental regulations</li>
+        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>Proper hazardous material handling</li>
+        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>Workplace safety awareness</li>
+        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>Responsible waste management practices</li>
+        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>Continuous safety improvement</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- COMPANY FACTS -->
+  <div class="section">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div><div class="eyebrow">Registered &amp; compliant</div>
+          <h2 class="h-lg">A duly registered<br>Zambian company</h2></div>
+      </div>
+      <div class="facts reveal">
+        <div class="fact"><div class="fl">Incorporated</div><div class="fv">18 March 2026</div></div>
+        <div class="fact"><div class="fl">Company type</div><div class="fv">Private Company Ltd by Shares</div></div>
+        <div class="fact"><div class="fl">Registration No.</div><div class="fv">120261042967</div></div>
+        <div class="fact"><div class="fl">Registered office</div><div class="fv">Kitwe, Copperbelt</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta-band section--tight">
+    <div class="media-bg"></div>
+    <div class="wrap reveal">
+      <div>
+        <div class="eyebrow" style="color:var(--accent-soft)">Work with us</div>
+        <h2 class="h-lg">A preferred partner<br>for industrial supply</h2>
+        <p>Through professionalism, integrity and customer satisfaction, we aim to be the
+          partner of choice for mining and industrial solutions.</p>
+      </div>
+      <div class="btn-col">
+        <a href="#contact" data-link class="btn btn--light">Get in touch
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ======================================================================
+     PAGE: SERVICES
+     ====================================================================== -->
+<section class="page" id="page-services">
+  <div class="page-head">
+    <div class="wrap">
+      <div class="crumb reveal">Home / Services</div>
+      <h1 class="h-xl reveal" style="--d:1">Everything mining and<br>industry needs to operate</h1>
+      <p class="lede reveal" style="--d:2">Eight dedicated supply and service lines — from
+        chemicals and equipment to waste management and construction materials.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="wrap">
+
+      <div class="offer reveal">
+        <div class="offer-media"><div class="media m-flow" style="min-height:380px"><span class="media-tag">Sulphuric acid</span></div></div>
+        <div>
+          <span class="offer-num">Service 01</span>
+          <h3 class="h-md">Supply of Sulphuric Acid</h3>
+          <p>We supply high-quality sulphuric acid to mining and industrial clients — ensuring
+            safe handling, transportation and timely delivery while maintaining strict
+            compliance with industry and environmental regulations.</p>
+          <ul>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 6"/></svg>Bulk sulphuric acid supply</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 6"/></svg>Industrial chemical distribution</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 6"/></svg>Safe transportation and logistics</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 6"/></svg>Industrial chemical handling support</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="offer offer--rev reveal">
+        <div class="offer-media"><div class="media m-spark" style="min-height:380px"><span class="media-tag">Mining chemicals</span></div></div>
+        <div>
+          <span class="offer-num">Service 02</span>
+          <h3 class="h-md">Mining Chemicals Supply</h3>
+          <p>We provide a wide range of mining chemicals used in mineral processing and mining
+            operations — supporting mining companies with reliable and cost-effective
+            chemical solutions.</p>
+          <ul>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 6"/></svg>Industrial mining reagents</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 6"/></svg>Processing chemicals</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 6"/></svg>Chemical handling solutions</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 6"/></svg>Industrial consumables</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="offer reveal">
+        <div class="offer-media"><div class="media m-topo" style="min-height:380px"><span class="media-tag">Waste management</span></div></div>
+        <div>
+          <span class="offer-num">Service 03</span>
+          <h3 class="h-md">Hazardous Waste Management</h3>
+          <p>Environmental protection and safety are key priorities at Flaxio. We provide
+            professional hazardous waste management solutions designed to help industries
+            maintain environmental compliance.</p>
+          <ul>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 6"/></svg>Hazardous waste collection</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 6"/></svg>Waste transportation</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 6"/></svg>Safe disposal management</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 6"/></svg>Environmental compliance support</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 6"/></svg>Industrial site clean-up services</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="offer offer--rev reveal">
+        <div class="offer-media"><div class="media m-grid" style="min-height:380px"><span class="media-tag">Drilling equipment</span></div></div>
+        <div>
+          <span class="offer-num">Service 04</span>
+          <h3 class="h-md">Drilling Equipment Supply</h3>
+          <p>We supply quality drilling equipment and accessories suitable for mining,
+            construction and industrial operations.</p>
+          <ul>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 6"/></svg>Drilling machines and accessories</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 6"/></svg>Mining drilling tools</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 6"/></svg>Industrial drilling consumables</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 6"/></svg>Equipment support and sourcing</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="offer reveal">
+        <div class="offer-media"><div class="media m-deep" style="min-height:380px"><span class="media-tag">Electrical equipment</span></div></div>
+        <div>
+          <span class="offer-num">Service 05</span>
+          <h3 class="h-md">Electrical Equipment Supply</h3>
+          <p>Flaxio Investment Limited supplies industrial and commercial electrical equipment
+            designed to support mining and industrial operations.</p>
+          <ul>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 6"/></svg>Industrial electrical equipment</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 6"/></svg>Power distribution accessories</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 6"/></svg>Electrical cables and fittings</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 6"/></svg>Safety electrical products</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 6"/></svg>Mining electrical consumables</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="offer offer--rev reveal">
+        <div class="offer-media"><div class="media m-earth" style="min-height:380px"><span class="media-tag">PPE &amp; safety</span></div></div>
+        <div>
+          <span class="offer-num">Service 06</span>
+          <h3 class="h-md">Supply of PPE</h3>
+          <p>We supply high-quality personal protective equipment to safeguard the health and
+            safety of workers handling hazardous materials.</p>
+          <ul>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 6"/></svg>Protective suits and coveralls</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 6"/></svg>Gloves, masks and respirators</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 6"/></svg>Helmets, eyewear and hearing protection</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 6"/></svg>High-visibility safety gear</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="offer reveal">
+        <div class="offer-media"><div class="media m-flow" style="min-height:380px"><span class="media-tag">Industrial valves</span></div></div>
+        <div>
+          <span class="offer-num">Service 07</span>
+          <h3 class="h-md">Industrial Valves Supply</h3>
+          <p>We supply high-quality industrial valves and related components for mining,
+            industrial, commercial and infrastructure applications — designed for fluid
+            control, pressure regulation, water and fuel systems, and heavy industrial
+            operations.</p>
+          <ul>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 6"/></svg>Fluid control and pressure-regulation valves</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 6"/></svg>Water and fuel system valves</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 6"/></svg>Valves for heavy industrial operations</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 6"/></svg>Sourced to industry standards for durability</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="offer offer--rev reveal">
+        <div class="offer-media"><div class="media m-grid" style="min-height:380px"><span class="media-tag">Construction materials</span></div></div>
+        <div>
+          <span class="offer-num">Service 08</span>
+          <h3 class="h-md">Construction Material Supply</h3>
+          <p>We supply premium construction materials for residential, commercial and
+            industrial projects — with timely delivery and quality assurance to support
+            project timelines and long-term durability.</p>
+          <ul>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 6"/></svg>Cement, steel and aggregates</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 6"/></svg>Roofing materials and paints</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 6"/></svg>Structural components</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 6"/></svg>Quality-assured, timely delivery</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- PROCESS -->
+  <div class="section section--tight" style="background:var(--bg-alt)">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div><div class="eyebrow">How we work</div><h2 class="h-lg">A simple, accountable process</h2></div>
+      </div>
+      <div class="steps reveal">
+        <div class="step"><div class="sn">01</div><h4>Understand</h4>
+          <p>We learn your operation, specifications and timelines.</p></div>
+        <div class="step"><div class="sn">02</div><h4>Source &amp; quote</h4>
+          <p>We source quality products and return a competitive quote.</p></div>
+        <div class="step"><div class="sn">03</div><h4>Deliver</h4>
+          <p>We handle safe transport and deliver where it's needed.</p></div>
+        <div class="step"><div class="sn">04</div><h4>Support</h4>
+          <p>We stay available for spares, advice and repeat supply.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta-band section--tight">
+    <div class="media-bg"></div>
+    <div class="wrap reveal">
+      <div>
+        <div class="eyebrow" style="color:var(--accent-soft)">Get started</div>
+        <h2 class="h-lg">Tell us what<br>you need supplied</h2>
+        <p>Send through a list or a specification. We'll come back with availability and pricing.</p>
+      </div>
+      <div class="btn-col">
+        <a href="#contact" data-link class="btn btn--light">Request a quote
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ======================================================================
+     PAGE: SECTORS
+     ====================================================================== -->
+<section class="page" id="page-sectors">
+  <div class="page-head">
+    <div class="wrap">
+      <div class="crumb reveal">Home / Sectors</div>
+      <h1 class="h-xl reveal" style="--d:1">The industries<br>we supply</h1>
+      <p class="lede reveal" style="--d:2">Flaxio supports the core sectors of Zambia's economy
+        with chemicals, equipment and environmental solutions tailored to each.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="wrap">
+
+      <div class="sector-detail reveal">
+        <div class="sd-media"><div class="media m-earth" style="min-height:380px"><span class="media-tag">Copperbelt</span></div></div>
+        <div>
+          <div class="eyebrow">Sector 01</div>
+          <h2 class="h-lg">Mining &amp; mineral processing</h2>
+          <p>The heart of the Copperbelt economy. We supply the sulphuric acid, mining
+            chemicals, drilling equipment, electrical equipment and PPE that mining and
+            mineral-processing operations depend on every day.</p>
+          <div class="tags">
+            <span class="tag">Sulphuric acid</span><span class="tag">Mining reagents</span>
+            <span class="tag">Drilling tools</span><span class="tag">Electrical equipment</span>
+            <span class="tag">PPE &amp; safety</span><span class="tag">Hazardous waste management</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="sector-detail sector-detail--rev reveal">
+        <div class="sd-media"><div class="media m-grid" style="min-height:380px"><span class="media-tag">Industry</span></div></div>
+        <div>
+          <div class="eyebrow">Sector 02</div>
+          <h2 class="h-lg">Manufacturing &amp; heavy industry</h2>
+          <p>Manufacturing and processing plants need consistent inputs and dependable
+            equipment. We keep production running with industrial chemicals, valves,
+            electrical supplies and consumables.</p>
+          <div class="tags">
+            <span class="tag">Industrial chemicals</span><span class="tag">Industrial valves</span>
+            <span class="tag">Electrical supplies</span><span class="tag">Waste management</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="sector-detail reveal">
+        <div class="sd-media"><div class="media m-spark" style="min-height:380px"><span class="media-tag">Construction</span></div></div>
+        <div>
+          <div class="eyebrow">Sector 03</div>
+          <h2 class="h-lg">Construction &amp; infrastructure</h2>
+          <p>From building projects to large-scale infrastructure, we supply premium
+            construction materials and equipment with timely delivery and quality assurance.</p>
+          <div class="tags">
+            <span class="tag">Cement, steel &amp; aggregates</span><span class="tag">Roofing &amp; paints</span>
+            <span class="tag">Construction tools</span><span class="tag">Drilling equipment</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="sector-detail sector-detail--rev reveal">
+        <div class="sd-media"><div class="media m-topo" style="min-height:380px"><span class="media-tag">Commercial</span></div></div>
+        <div>
+          <div class="eyebrow">Sector 04</div>
+          <h2 class="h-lg">Commercial &amp; institutional</h2>
+          <p>We serve commercial businesses and institutions requiring reliable industrial
+            supply — valves, electrical products, PPE and environmental services for daily
+            operations and large-scale projects.</p>
+          <div class="tags">
+            <span class="tag">Electrical products</span><span class="tag">Industrial valves</span>
+            <span class="tag">PPE &amp; safety</span><span class="tag">Waste management</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="cta-band section--tight">
+    <div class="media-bg"></div>
+    <div class="wrap reveal">
+      <div>
+        <div class="eyebrow" style="color:var(--accent-soft)">Your sector</div>
+        <h2 class="h-lg">Not sure if we<br>cover your needs?</h2>
+        <p>If your operation needs industrial supply or environmental solutions, talk to us.</p>
+      </div>
+      <div class="btn-col">
+        <a href="#contact" data-link class="btn btn--light">Contact our team
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ======================================================================
+     PAGE: CONTACT
+     ====================================================================== -->
+<section class="page" id="page-contact">
+  <div class="page-head">
+    <div class="wrap">
+      <div class="crumb reveal">Home / Contact</div>
+      <h1 class="h-xl reveal" style="--d:1">Let's talk supply</h1>
+      <p class="lede reveal" style="--d:2">Send us your requirements or a question. Our team
+        responds quickly with availability, pricing and advice.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="wrap contact-grid">
+
+      <!-- form: front-end only — wire the send button to your backend/email -->
+      <div class="reveal">
+        <div class="eyebrow">Request a quote</div>
+        <h2 class="h-md" style="margin-bottom:28px">Tell us what you need</h2>
+        <div class="field">
+          <label for="cName">Full name</label>
+          <input id="cName" type="text" placeholder="Your name">
+        </div>
+        <div class="field">
+          <label for="cCompany">Company / organisation</label>
+          <input id="cCompany" type="text" placeholder="Company name">
+        </div>
+        <div class="field">
+          <label for="cEmail">Email address</label>
+          <input id="cEmail" type="email" placeholder="you@company.com">
+        </div>
+        <div class="field">
+          <label for="cInterest">What can we help with?</label>
+          <select id="cInterest">
+            <option>Supply of sulphuric acid</option>
+            <option>Mining chemicals supply</option>
+            <option>Hazardous waste management</option>
+            <option>Drilling equipment supply</option>
+            <option>Electrical equipment supply</option>
+            <option>Supply of PPE</option>
+            <option>Industrial valves supply</option>
+            <option>Construction material supply</option>
+            <option>General enquiry</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="cMsg">Your requirements</label>
+          <textarea id="cMsg" placeholder="Describe the products or quantities you need..."></textarea>
+        </div>
+        <button class="btn btn--solid" id="sendBtn">
+          Send enquiry
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </button>
+        <div class="form-note" id="formNote"></div>
+      </div>
+
+      <!-- info -->
+      <div class="contact-info reveal" style="--d:1">
+        <div class="ci-row">
+          <div class="ci-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21c5-4 8-7.5 8-12a8 8 0 0 0-16 0c0 4.5 3 8 8 12Z"/><circle cx="12" cy="9" r="2.5"/></svg></div>
+          <div><h4>Visit us</h4><p>1018 Blantyre Road, Industrial Area,<br>Kitwe, Zambia</p></div>
+        </div>
+        <div class="ci-row">
+          <div class="ci-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg></div>
+          <div><h4>Call us</h4><p>+260 979 069 890<br>+260 760 794 185</p></div>
+        </div>
+        <div class="ci-row">
+          <div class="ci-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></div>
+          <div><h4>Email us</h4><p>info@flaxioinvestment.com</p></div>
+        </div>
+        <div class="ci-row">
+          <div class="ci-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+          <div><h4>Office hours</h4><p>Monday – Friday, 08:00 – 17:00<br>Saturday, 08:00 – 13:00</p></div>
+        </div>
+        <div class="map-band">
+          <svg class="map-pin" width="34" height="34" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5Z"/></svg>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================ FOOTER ============================ -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a href="#home" data-link class="brand">
+          <svg class="brand-mark" viewBox="0 0 54 46" fill="none">
+            <path d="M3 40 Q25 33 51 7" stroke="var(--accent)" stroke-width="3.4" stroke-linecap="round" fill="none"/>
+            <rect x="37" y="18" width="3.2" height="7" rx="1" fill="var(--accent)"/>
+            <rect x="42" y="13" width="3.2" height="12" rx="1" fill="var(--accent)"/>
+            <rect x="47" y="7" width="3.2" height="18" rx="1" fill="var(--accent)"/>
+            <rect x="6" y="8" width="5.5" height="30" fill="#f4f5f8"/>
+            <rect x="6" y="8" width="14" height="5" fill="#f4f5f8"/>
+            <rect x="6" y="19.5" width="10" height="4.6" fill="#f4f5f8"/>
+            <rect x="25" y="8" width="5.5" height="30" fill="var(--accent)"/>
+            <rect x="20.5" y="8" width="14.5" height="4" fill="var(--accent)"/>
+            <rect x="20.5" y="34" width="14.5" height="4" fill="var(--accent)"/>
+          </svg>
+          <span style="color:#f4f5f8">FLAXIO<small style="color:#7e8794">Investment Limited</small></span>
+        </a>
+        <p>A Zambian-owned supplier of chemicals, equipment and environmental solutions to
+          the mining, manufacturing and commercial sectors.</p>
+      </div>
+      <div class="foot-col">
+        <h5>Company</h5>
+        <a href="#home" data-link>Home</a>
+        <a href="#about" data-link>About us</a>
+        <a href="#services" data-link>Services</a>
+        <a href="#sectors" data-link>Sectors</a>
+      </div>
+      <div class="foot-col">
+        <h5>Services</h5>
+        <a href="#services" data-link>Sulphuric acid supply</a>
+        <a href="#services" data-link>Mining chemicals</a>
+        <a href="#services" data-link>Drilling &amp; electrical equipment</a>
+        <a href="#services" data-link>Hazardous waste management</a>
+      </div>
+      <div class="foot-col">
+        <h5>Get in touch</h5>
+        <a href="#contact" data-link>1018 Blantyre Road, Kitwe</a>
+        <a href="#contact" data-link>+260 979 069 890</a>
+        <a href="#contact" data-link>+260 760 794 185</a>
+        <a href="#contact" data-link>info@flaxioinvestment.com</a>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>© 2026 Flaxio Investment Limited. All rights reserved.</span>
+      <div class="socials">
+        <a href="#" aria-label="LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5A2.5 2.5 0 1 1 0 3.5a2.5 2.5 0 0 1 4.98 0ZM0 8h5v16H0V8Zm7.5 0H12v2.2h.07c.62-1.18 2.14-2.43 4.43-2.43 4.74 0 5.5 3.12 5.5 7.17V24h-5v-7.3c0-1.74 0-3.98-2.42-3.98s-2.8 1.9-2.8 3.86V24h-5V8Z"/></svg></a>
+        <a href="#" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.45 2.9h-2.35v7A10 10 0 0 0 22 12Z"/></svg></a>
+        <a href="#" aria-label="Email"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ============================ HASH ROUTER ============================ */
+var PAGES = ['home','about','services','sectors','contact'];
+
+function showPage(id){
+  if(PAGES.indexOf(id) === -1) id = 'home';
+  document.querySelectorAll('.page').forEach(function(p){p.classList.remove('is-active');});
+  var el = document.getElementById('page-'+id);
+  if(el) el.classList.add('is-active');
+  document.querySelectorAll('[data-nav]').forEach(function(n){
+    n.classList.toggle('is-current', n.getAttribute('data-nav') === id);
+  });
+  window.scrollTo(0,0);
+  closeMenu();
+  observeReveals();
+}
+
+document.addEventListener('click', function(e){
+  var link = e.target.closest('[data-link]');
+  if(!link) return;
+  e.preventDefault();
+  var id = (link.getAttribute('href')||'#home').replace('#','');
+  if(('#'+id) === window.location.hash){ showPage(id); }
+  else { window.location.hash = id; }
+});
+
+window.addEventListener('hashchange', function(){
+  showPage((window.location.hash||'#home').replace('#',''));
+});
+
+/* ============================ SCROLL REVEAL ============================ */
+var revealObserver = new IntersectionObserver(function(entries){
+  entries.forEach(function(en){
+    if(en.isIntersecting){
+      en.target.classList.add('in');
+      revealObserver.unobserve(en.target);
+    }
+  });
+},{threshold:0.12, rootMargin:'0px 0px -40px 0px'});
+
+function observeReveals(){
+  var active = document.querySelector('.page.is-active');
+  if(!active) return;
+  active.querySelectorAll('.reveal').forEach(function(el){
+    el.classList.remove('in');
+    revealObserver.observe(el);
+  });
+}
+
+/* ============================ HEADER SCROLL ============================ */
+var header = document.getElementById('header');
+window.addEventListener('scroll', function(){
+  header.classList.toggle('scrolled', window.scrollY > 24);
+});
+
+/* ============================ MOBILE MENU ============================ */
+function closeMenu(){ document.body.classList.remove('nav-open'); }
+document.getElementById('burger').addEventListener('click', function(){
+  document.body.classList.toggle('nav-open');
+});
+document.addEventListener('click', function(e){
+  if(!document.body.classList.contains('nav-open')) return;
+  if(e.target.closest('#nav') || e.target.closest('#burger')) return;
+  closeMenu();
+});
+
+/* ============================ THEME TOGGLE ============================ */
+document.getElementById('themeToggle').addEventListener('click', function(){
+  var html = document.documentElement;
+  html.setAttribute('data-theme',
+    html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+});
+
+/* ============================ CONTACT FORM ============================ */
+document.getElementById('sendBtn').addEventListener('click', function(){
+  var name = document.getElementById('cName').value.trim();
+  var email = document.getElementById('cEmail').value.trim();
+  var note = document.getElementById('formNote');
+  note.style.display = 'block';
+  if(!name || !email){
+    note.style.background = 'rgba(184,92,56,.15)';
+    note.style.color = 'var(--accent)';
+    note.textContent = 'Please add at least your name and email so we can reply.';
+    return;
+  }
+  note.style.background = '';
+  note.style.color = '';
+  note.textContent = 'Thank you, ' + name + ' — your enquiry has been noted. Our team will be in touch shortly.';
+  ['cName','cCompany','cEmail','cMsg'].forEach(function(f){
+    document.getElementById(f).value = '';
+  });
+});
+
+/* ============================ INIT ============================ */
+showPage((window.location.hash||'#home').replace('#',''));
+</script>
+</body>
+</html>
