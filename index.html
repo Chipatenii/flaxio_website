@@ -30,15 +30,15 @@
   --font-serif:'Cinzel', serif;
 
   /* light theme — sampled from the Flaxio logo (navy + gold) */
-  --bg:#f4f5f8;
-  --bg-alt:#ffffff;
-  --surface:#e7e9f1;
+  --bg:#edf7ff;
+  --bg-alt:#f8fcff;
+  --surface:#dcecf8;
   --ink:#141a2b;
   --ink-soft:#4a5168;
   --ink-faint:#838999;
   --primary:#1c2e54;        /* Flaxio navy */
   --primary-deep:#11203f;
-  --primary-tint:#e2e5ee;
+  --primary-tint:#d9ebfa;
   --accent:#b8923f;         /* Flaxio gold */
   --accent-soft:#cda85a;
   --line:rgba(20,26,43,.13);
@@ -141,12 +141,12 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:600;line-height:1.04;let
 .site-header{
   position:fixed;top:0;left:0;right:0;z-index:1000;height:var(--header-h);
   display:flex;align-items:center;
-  background:color-mix(in srgb,var(--bg) 86%,transparent);
-  backdrop-filter:blur(14px);
+  background:#fff;
+  backdrop-filter:none;
   border-bottom:1px solid transparent;
   transition:height .3s ease,background .3s ease,border-color .3s ease;
 }
-.site-header.scrolled{height:64px;border-color:var(--line)}
+.site-header.scrolled{height:64px;background:#fff;border-color:var(--line)}
 .header-inner{display:flex;align-items:center;justify-content:space-between;width:100%}
 .brand{display:flex;align-items:center;gap:13px;font-family:var(--font-serif);
   font-weight:600;font-size:1.15rem;letter-spacing:.085em}
@@ -156,6 +156,11 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:600;line-height:1.04;let
   border-radius:12px;box-shadow:0 6px 20px -10px rgba(0,0,0,.4)}
 html[data-theme="dark"] .site-header .brand-mark{background:#fff;padding:6px 8px;
   border-radius:10px}
+html[data-theme="dark"] .site-header{background:#fff;color:#141a2b}
+html[data-theme="dark"] .site-header .nav a[data-nav]{color:#4a5168}
+html[data-theme="dark"] .site-header .nav a[data-nav]:hover,
+html[data-theme="dark"] .site-header .nav a[data-nav].is-current{color:#141a2b}
+html[data-theme="dark"] .site-header .burger span{background:#141a2b}
 
 .nav{display:flex;align-items:center;gap:6px}
 .nav a[data-nav]{
@@ -476,16 +481,16 @@ html[data-theme="dark"] .form-note{color:var(--accent);border-color:rgba(205,168
 /* ============================================================
    FOOTER
    ============================================================ */
-.site-footer{background:var(--primary-deep);color:#c3ccd6;padding:80px 0 34px}
+.site-footer{background:#284a7a;color:#dce6f2;padding:80px 0 34px}
 .foot-top{display:grid;grid-template-columns:1.6fr 1fr 1fr 1.1fr;gap:40px;
   padding-bottom:54px;border-bottom:1px solid rgba(255,255,255,.1)}
 .foot-brand .brand{color:#f4f5f8;margin-bottom:18px}
 .foot-brand p{font-size:.93rem;max-width:34ch}
 .foot-col h5{color:#f4f5f8;font-family:var(--font-display);font-size:1rem;margin-bottom:18px}
-.foot-col a{display:block;font-size:.92rem;padding:6px 0;color:#9fa8b5;transition:color .2s}
+.foot-col a{display:block;font-size:.92rem;padding:6px 0;color:#c9d7e8;transition:color .2s}
 .foot-col a:hover{color:var(--accent-soft)}
 .foot-bot{display:flex;justify-content:space-between;align-items:center;
-  padding-top:28px;font-size:.84rem;color:#7e8794;flex-wrap:wrap;gap:14px}
+  padding-top:28px;font-size:.84rem;color:#b8c8dc;flex-wrap:wrap;gap:14px}
 .dev-credit a{color:var(--accent-soft);font-weight:500;transition:color .2s}
 .dev-credit a:hover{color:#f4f5f8;text-decoration:underline}
 .socials{display:flex;gap:10px}
