@@ -5,8 +5,8 @@
 
   CUSTOMISE
   ---------
-  - "Image" cells (.media) are CSS-generated textures — swap for real photos.
-  - Contact form is front-end only — wire the send button to your backend/email.
+  - Service image cells use generated project assets in assets/services.
+  - Contact form opens a prepared email via mailto.
   - Header/footer logos load assets/flaxio-logo.png (the official Flaxio mark).
   - Brand colours live in the :root CSS variables ("BRAND TOKENS").
 -->
@@ -17,6 +17,69 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Flaxio Investment Limited — Mining &amp; Industrial Supply, Kitwe Zambia</title>
 <meta name="description" content="Flaxio Investment Limited is a Zambian-owned supplier of sulphuric acid, mining chemicals, mining and electrical equipment, PPE, industrial valves and flanges, laboratory chemicals, construction materials, general hardware, fire extinguishers and hazardous waste management — based in Kitwe, Copperbelt.">
+<meta name="keywords" content="Flaxio Investment Limited, Kitwe industrial supplier, Zambia mining chemicals, sulphuric acid supply Zambia, hazardous waste management Kitwe, mining equipment supplier, PPE supplier Zambia">
+<meta name="author" content="Flaxio Investment Limited">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#1c2e54">
+<link rel="canonical" href="https://flaxioinvestment.com/">
+<link rel="icon" type="image/png" href="assets/flaxio-logo.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Flaxio Investment Limited — Mining &amp; Industrial Supply">
+<meta property="og:description" content="Zambian-owned supplier of sulphuric acid, mining chemicals, equipment, PPE, fire safety products and hazardous waste management services in Kitwe, Copperbelt.">
+<meta property="og:url" content="https://flaxioinvestment.com/">
+<meta property="og:image" content="https://flaxioinvestment.com/assets/hero_landing.png">
+<meta property="og:locale" content="en_ZM">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Flaxio Investment Limited — Mining &amp; Industrial Supply">
+<meta name="twitter:description" content="Industrial chemicals, equipment, PPE and waste management services for mining, manufacturing and commercial sectors in Zambia.">
+<meta name="twitter:image" content="https://flaxioinvestment.com/assets/hero_landing.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Flaxio Investment Limited",
+  "url": "https://flaxioinvestment.com/",
+  "image": "https://flaxioinvestment.com/assets/flaxio-logo.png",
+  "email": "info@flaxioinvestment.com",
+  "telephone": "+260979069890",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "1018 Blantyre Road, Industrial Area",
+    "addressLocality": "Kitwe",
+    "addressRegion": "Copperbelt",
+    "addressCountry": "ZM"
+  },
+  "areaServed": "Zambia",
+  "description": "Zambian-owned supplier of sulphuric acid, mining chemicals, mining and electrical equipment, PPE, industrial valves, construction materials, laboratory chemicals, hardware, fire extinguishers and hazardous waste management.",
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+      "opens": "08:00",
+      "closes": "17:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Saturday",
+      "opens": "08:00",
+      "closes": "13:00"
+    }
+  ],
+  "makesOffer": [
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Sulphuric acid supply"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Mining chemicals supply"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Hazardous waste management"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Mining equipment supply"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Electrical equipment supply"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"PPE supply"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Industrial valves and flanges"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Construction materials supply"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Laboratory chemicals supply"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"General hardware supply"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Fire extinguishers supply"}}
+  ]
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Cinzel:wght@500;600;700&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -78,6 +141,10 @@ body{
 img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
 button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+:focus-visible{
+  outline:3px solid color-mix(in srgb,var(--accent) 75%,#fff);
+  outline-offset:4px;
+}
 
 body::after{
   content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;
@@ -109,6 +176,7 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:600;line-height:1.04;let
   position:relative;
   overflow:hidden;
   box-shadow:0 4px 12px rgba(17,32,63,.08);
+  min-height:48px;
 }
 .btn::before{
   content:"";position:absolute;top:0;left:-100%;width:100%;height:100%;
@@ -147,9 +215,9 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:600;line-height:1.04;let
   transition:height .3s ease,background .3s ease,border-color .3s ease;
 }
 .site-header.scrolled{height:64px;background:#fff;border-color:var(--line)}
-.header-inner{display:flex;align-items:center;justify-content:space-between;width:100%}
+.header-inner{display:flex;align-items:center;justify-content:space-between;width:100%;gap:16px;min-width:0}
 .brand{display:flex;align-items:center;gap:13px;font-family:var(--font-serif);
-  font-weight:600;font-size:1.15rem;letter-spacing:.085em}
+  font-weight:600;font-size:1.15rem;letter-spacing:.085em;min-width:0}
 .brand-mark{height:58px;width:auto;flex:none;display:block;object-fit:contain}
 .site-header.scrolled .brand-mark{height:48px;transition:height .3s ease}
 .foot-brand .brand-mark{height:78px;background:#fff;padding:8px 12px;
@@ -163,6 +231,7 @@ html[data-theme="dark"] .site-header .nav a[data-nav].is-current{color:#141a2b}
 html[data-theme="dark"] .site-header .burger span{background:#141a2b}
 
 .nav{display:flex;align-items:center;gap:6px}
+#navCta{display:none}
 .nav a[data-nav]{
   position:relative;padding:9px 16px;font-size:.93rem;font-weight:500;
   color:var(--ink-soft);border-radius:8px;transition:color .2s;
@@ -176,7 +245,7 @@ html[data-theme="dark"] .site-header .burger span{background:#141a2b}
 .nav a[data-nav].is-current{color:var(--ink);font-weight:600}
 .nav a[data-nav].is-current::after,.nav a[data-nav]:hover::after{transform:scaleX(1)}
 
-.header-actions{display:flex;align-items:center;gap:14px}
+.header-actions{display:flex;align-items:center;gap:14px;flex:none}
 .icon-btn{
   width:40px;height:40px;border-radius:50%;border:1px solid var(--line);
   display:flex;align-items:center;justify-content:center;transition:.25s;
@@ -218,6 +287,8 @@ main{padding-top:var(--header-h)}
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E")}
 .media:hover{transform:scale(1.028);box-shadow:0 22px 48px -18px rgba(17,32,63,.38)}
 html[data-theme="dark"] .media:hover{box-shadow:0 22px 48px -20px rgba(0,0,0,.6)}
+.media-link{display:block;color:#fff}
+.media-link:focus-visible{box-shadow:0 0 0 4px rgba(184,146,63,.25),var(--shadow)}
 .media-tag{position:absolute;left:16px;bottom:14px;z-index:2;font-size:.72rem;
   font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#fff;
   background:rgba(8,12,20,.65);backdrop-filter:blur(6px);padding:6px 12px;border-radius:30px;
@@ -315,9 +386,12 @@ html[data-theme="dark"] .quote{background:var(--primary-deep)}
 .offer-num{font-family:var(--font-display);font-size:.95rem;color:var(--accent);
   font-weight:600;letter-spacing:.1em}
 .offer h3{margin:14px 0 16px}
+.offer h3 a{transition:color .2s}
+.offer h3 a:hover{color:var(--accent)}
 .offer ul{list-style:none;margin-top:20px;display:grid;gap:10px}
 .offer li{display:flex;gap:12px;align-items:flex-start;font-size:.96rem;color:var(--ink-soft)}
 .offer li svg{flex:none;margin-top:4px;color:var(--accent)}
+.offer-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
 
 /* sector cards */
 .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
@@ -339,7 +413,7 @@ html[data-theme="dark"] .quote{background:var(--primary-deep)}
 .svc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
 .svc-card{border:1px solid var(--line);border-radius:14px;padding:26px 24px;
   background:var(--bg-alt);cursor:pointer;display:flex;flex-direction:column;
-  transition:transform .35s cubic-bezier(.2,.7,.3,1),border-color .25s}
+  transition:transform .35s cubic-bezier(.2,.7,.3,1),border-color .25s,box-shadow .25s}
 .svc-card:hover{transform:translateY(-6px);border-color:var(--accent)}
 .svc-thumb{border-radius:12px;overflow:hidden;margin-bottom:18px;height:120px;
   background:var(--surface)}
@@ -351,6 +425,7 @@ html[data-theme="dark"] .svc-ic{color:var(--accent)}
 .svc-card p{font-size:.9rem;color:var(--ink-soft);flex:1}
 .svc-more{margin-top:16px;font-size:.8rem;font-weight:600;color:var(--accent);
   display:flex;align-items:center;gap:6px}
+.svc-card:focus-visible{box-shadow:0 0 0 4px rgba(184,146,63,.18)}
 
 /* values / why grid */
 .values{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;
@@ -415,6 +490,22 @@ html[data-theme="dark"] .hse{background:var(--primary-deep)}
 .page-head h1{max-width:16ch}
 .page-head .lede{margin-top:22px}
 
+/* service detail page */
+.service-detail-grid{display:grid;grid-template-columns:.88fr 1.12fr;gap:64px;align-items:start}
+.service-detail-media{position:sticky;top:calc(var(--header-h) + 28px)}
+.service-detail-media img{width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:14px;
+  box-shadow:var(--shadow)}
+.service-detail-copy{display:grid;gap:28px}
+.detail-panel{border:1px solid var(--line);border-radius:14px;background:var(--bg-alt);
+  padding:30px}
+.detail-panel h2,.detail-panel h3{font-size:1.28rem;margin-bottom:14px}
+.detail-panel p{color:var(--ink-soft)}
+.detail-list{list-style:none;display:grid;gap:12px}
+.detail-list li{display:flex;gap:12px;align-items:flex-start;color:var(--ink-soft)}
+.detail-list li::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--accent);
+  flex:none;margin-top:8px}
+.detail-tags{display:flex;flex-wrap:wrap;gap:8px}
+
 /* process steps */
 .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
 .step{border:1px solid var(--line);border-radius:14px;padding:30px 26px;
@@ -428,6 +519,7 @@ html[data-theme="dark"] .step .sn{color:var(--surface)}
 /* sector detail */
 .sector-detail{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center;
   padding:64px 0;border-bottom:1px solid var(--line)}
+.sector-detail{scroll-margin-top:calc(var(--header-h) + 24px)}
 .sector-detail:last-child{border-bottom:none}
 .sector-detail--rev .sd-media{order:2}
 .sector-detail .media{min-height:380px}
@@ -448,8 +540,12 @@ html[data-theme="dark"] .step .sn{color:var(--surface)}
   background:var(--bg-alt);color:var(--ink);font-family:inherit;font-size:.96rem;
   transition:border-color .2s}
 .field input:focus,.field textarea:focus,.field select:focus{
-  outline:none;border-color:var(--accent)}
+  border-color:var(--accent);box-shadow:0 0 0 4px rgba(184,146,63,.16)}
+.field input[aria-invalid="true"],.field textarea[aria-invalid="true"],.field select[aria-invalid="true"]{
+  border-color:#b85c38;box-shadow:0 0 0 4px rgba(184,92,56,.14)}
 .field textarea{resize:vertical;min-height:130px}
+.quote-form{max-width:620px}
+.quote-form .btn{width:auto}
 .contact-info{display:grid;gap:8px;align-content:start}
 .ci-row{display:flex;gap:16px;padding:22px 0;border-bottom:1px solid var(--line)}
 .ci-row .ci-ic{width:44px;height:44px;border-radius:10px;flex:none;
@@ -458,11 +554,17 @@ html[data-theme="dark"] .step .sn{color:var(--surface)}
 html[data-theme="dark"] .ci-row .ci-ic{color:var(--accent)}
 .ci-row h4{font-size:1rem;margin-bottom:3px}
 .ci-row p{font-size:.93rem;color:var(--ink-soft)}
+.ci-row a,.foot-col a.contact-action{color:inherit;text-decoration-thickness:1.5px;text-underline-offset:3px}
+.ci-row a:hover,.foot-col a.contact-action:hover{text-decoration:underline}
 .form-note{display:none;margin-top:14px;padding:16px 20px;border-radius:12px;
   background:var(--primary-tint);color:var(--primary);font-size:.94rem;font-weight:600;
   border:1px solid rgba(28,46,84,.15);animation:formNoteIn 0.4s cubic-bezier(.2,.8,.2,1)}
+.form-note.is-error{background:rgba(184,92,56,.12);color:#9b4429;border-color:rgba(184,92,56,.25)}
+.form-note.is-success{background:rgba(28,46,84,.08);color:var(--primary);border-color:rgba(28,46,84,.2)}
 @keyframes formNoteIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 html[data-theme="dark"] .form-note{color:var(--accent);border-color:rgba(205,168,90,.2)}
+html[data-theme="dark"] .form-note.is-error{color:#ffd1c4;border-color:rgba(255,145,115,.35)}
+html[data-theme="dark"] .form-note.is-success{color:var(--accent);border-color:rgba(205,168,90,.25)}
 .map-band{height:300px;border-radius:14px;overflow:hidden;margin-top:20px;
   position:relative;background:linear-gradient(150deg,#2f447e,#13213f)}
 .map-band::before{content:"";position:absolute;inset:0;
@@ -499,15 +601,32 @@ html[data-theme="dark"] .form-note{color:var(--accent);border-color:rgba(205,168
   justify-content:center;transition:.25s}
 .socials a:hover{background:var(--accent);border-color:var(--accent);color:#fff}
 
+/* cookie notice */
+.cookie-banner{position:fixed;left:18px;right:18px;bottom:18px;z-index:1100;
+  display:none;align-items:center;justify-content:space-between;gap:20px;
+  max-width:980px;margin:0 auto;padding:18px 20px;border:1px solid var(--line);
+  border-radius:14px;background:var(--bg-alt);box-shadow:var(--shadow)}
+.cookie-banner.is-visible{display:flex}
+.cookie-banner p{font-size:.92rem;color:var(--ink-soft);max-width:70ch}
+.cookie-banner strong{display:block;color:var(--ink);font-size:1rem;margin-bottom:3px}
+.cookie-actions{display:flex;flex-wrap:wrap;gap:10px;flex:none}
+.cookie-actions .btn{padding:12px 18px;min-height:42px;font-size:.88rem}
+.policy-list{display:grid;gap:18px;margin-top:28px}
+.policy-list article{border:1px solid var(--line);border-radius:14px;background:var(--bg-alt);
+  padding:24px}
+.policy-list h3{font-size:1.16rem;margin-bottom:8px}
+.policy-list p{color:var(--ink-soft)}
+
 /* ============================================================
    RESPONSIVE
    ============================================================ */
 @media(max-width:1024px){
   .section{padding:88px 0}
   .section--tight{padding:72px 0}
-  .split,.offer,.sector-detail,.contact-grid,.cta-band .wrap,.hse .wrap{
+  .split,.offer,.sector-detail,.contact-grid,.cta-band .wrap,.hse .wrap,.service-detail-grid{
     grid-template-columns:1fr;gap:44px}
   .offer--rev .offer-media,.sector-detail--rev .sd-media,.split--rev .split-text{order:0}
+  .service-detail-media{position:static}
   .cards,.values,.steps,.svc-grid,.clients,.facts{grid-template-columns:repeat(2,1fr)}
   .stats{grid-template-columns:repeat(2,1fr)}
   .stat:nth-child(2){border-right:none}
@@ -536,10 +655,11 @@ html[data-theme="dark"] .form-note{color:var(--accent);border-color:rgba(205,168
   body.nav-open .site-header{height:var(--header-h)}
   .nav{
     position:fixed;inset:var(--header-h) 0 auto 0;flex-direction:column;
-    align-items:stretch;background:var(--bg);padding:18px 20px 30px;gap:2px;
+    align-items:stretch;background:#fff;padding:18px 20px 30px;gap:2px;
     border-bottom:1px solid var(--line);transform:translateY(-12px);
     opacity:0;pointer-events:none;transition:.3s;box-shadow:var(--shadow)}
   body.nav-open .nav{transform:none;opacity:1;pointer-events:auto}
+  #navCta{display:flex}
   .nav a[data-nav]{padding:15px 12px;font-size:1.05rem;border-radius:10px}
   .nav a[data-nav]::after{display:none}
   .nav a[data-nav]:hover{background:var(--surface)}
@@ -562,8 +682,10 @@ html[data-theme="dark"] .form-note{color:var(--accent);border-color:rgba(205,168
   .grid-2 .media{min-height:200px}
   .offer .media,.sector-detail .media{min-height:230px!important}
   .card{min-height:260px}
-  .offer{padding:46px 0}
+  .offer{padding:44px 0;gap:28px}
   .sector-detail{padding:46px 0}
+  .detail-panel{padding:24px}
+  .service-detail-copy{gap:20px}
   .value{padding:28px 24px}
 
   /* section + page headings */
@@ -573,11 +695,15 @@ html[data-theme="dark"] .form-note{color:var(--accent);border-color:rgba(205,168
 
   /* forms: 16px inputs stop iOS auto-zoom on focus */
   .field input,.field textarea,.field select{font-size:16px}
+  .quote-form .btn{width:100%;justify-content:center}
   .contact-info{margin-top:8px}
 
   /* footer */
   .foot-top{grid-template-columns:1fr 1fr;gap:30px}
   .foot-bot{flex-direction:column;align-items:flex-start}
+  .cookie-banner{align-items:flex-start;flex-direction:column}
+  .cookie-actions{width:100%}
+  .cookie-actions .btn{flex:1;justify-content:center}
 }
 
 @media(max-width:420px){
@@ -591,6 +717,36 @@ html[data-theme="dark"] .form-note{color:var(--accent);border-color:rgba(205,168
   .stat:last-child{border-bottom:none}
   .foot-top{grid-template-columns:1fr}
 }
+
+@media(max-width:560px){
+  .wrap{padding:0 20px}
+  .header-inner{gap:12px}
+  .brand-mark{height:44px}
+  .icon-btn,.burger{width:38px;height:38px}
+  #themeToggle{display:none}
+  .header-actions{gap:8px}
+  .eyebrow{font-size:.66rem;letter-spacing:.12em;line-height:1.55;flex-wrap:wrap}
+  .eyebrow::before{width:28px}
+  .h-xl,.hero h1,.page-head h1{font-size:2.35rem;line-height:1.08;max-width:100%}
+  .page-head h1{max-width:11ch}
+  .h-lg{font-size:2rem}
+  .lede,.hero .lede,.page-head .lede{font-size:1rem;max-width:100%;overflow-wrap:break-word}
+  .hero{padding-top:48px}
+  .hero-image img,.service-detail-media img{border-radius:12px}
+  .service-detail-media img{aspect-ratio:4/3}
+  .svc-card{padding:22px 20px}
+  .detail-panel{padding:22px 18px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.001ms!important;
+    animation-iteration-count:1!important;
+    scroll-behavior:auto!important;
+    transition-duration:.001ms!important;
+  }
+  .reveal,.hero .stagger{opacity:1;transform:none}
+}
 </style>
 </head>
 <body>
@@ -602,7 +758,7 @@ html[data-theme="dark"] .form-note{color:var(--accent);border-color:rgba(205,168
       <img class="brand-mark" src="assets/flaxio-logo.png" alt="Flaxio Investment Limited">
     </a>
 
-    <nav class="nav" id="nav">
+    <nav class="nav" id="nav" aria-label="Primary navigation">
       <a href="#home" data-link data-nav="home">Home</a>
       <a href="#about" data-link data-nav="about">About</a>
       <a href="#services" data-link data-nav="services">Services</a>
@@ -612,14 +768,14 @@ html[data-theme="dark"] .form-note{color:var(--accent);border-color:rgba(205,168
     </nav>
 
     <div class="header-actions">
-      <button class="icon-btn" id="themeToggle" aria-label="Toggle colour mode">
+      <button class="icon-btn" id="themeToggle" aria-label="Toggle colour mode" aria-pressed="false">
         <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8Z"/></svg>
         <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <circle cx="12" cy="12" r="4.2"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9 17 7M7 17l-2.1 2.1"/></svg>
       </button>
       <a href="#contact" data-link class="btn btn--accent btn-contact">Request a quote</a>
-      <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+      <button class="burger" id="burger" aria-label="Open menu" aria-controls="nav" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
   </div>
 </header>
@@ -685,10 +841,10 @@ html[data-theme="dark"] .form-note{color:var(--accent);border-color:rgba(205,168
         </div>
       </div>
       <div class="grid-2 reveal" style="--d:1">
-        <div class="media m-flow"><span class="media-tag">Sulphuric acid</span></div>
-        <div class="media m-spark"><span class="media-tag">Mining chemicals</span></div>
-        <div class="media m-grid"><span class="media-tag">Drilling equipment</span></div>
-        <div class="media m-topo"><span class="media-tag">Waste management</span></div>
+        <a href="#service-sulphuric-acid" data-link class="media media-link m-flow" style="background-image:url('assets/services/service-01-sulphuric-acid.jpg')" aria-label="View sulphuric acid supply details"><span class="media-tag">Sulphuric acid</span></a>
+        <a href="#service-mining-chemicals" data-link class="media media-link m-spark" style="background-image:url('assets/services/service-02-mining-chemicals.jpg')" aria-label="View mining chemicals details"><span class="media-tag">Mining chemicals</span></a>
+        <a href="#service-mining-equipment" data-link class="media media-link m-grid" style="background-image:url('assets/services/service-04-mining-equipment.jpg')" aria-label="View mining equipment details"><span class="media-tag">Mining equipment</span></a>
+        <a href="#service-hazardous-waste" data-link class="media media-link m-topo" style="background-image:url('assets/services/service-03-hazardous-waste.jpg')" aria-label="View hazardous waste management details"><span class="media-tag">Waste management</span></a>
       </div>
     </div>
   </div>
@@ -706,10 +862,10 @@ html[data-theme="dark"] .form-note{color:var(--accent);border-color:rgba(205,168
   <div class="section">
     <div class="wrap split split--rev">
       <div class="grid-2 reveal">
-        <div class="media m-deep"><span class="media-tag">Quality assurance</span></div>
-        <div class="media m-grid"><span class="media-tag">Safe handling</span></div>
-        <div class="media m-flow"><span class="media-tag">Timely logistics</span></div>
-        <div class="media m-topo"><span class="media-tag">Compliance</span></div>
+        <a href="#service-laboratory-chemicals" data-link class="media media-link m-deep" style="background-image:url('assets/services/service-09-laboratory-chemicals.jpg')" aria-label="View laboratory chemicals and quality control details"><span class="media-tag">Quality assurance</span></a>
+        <a href="#service-ppe" data-link class="media media-link m-grid" style="background-image:url('assets/services/service-06-ppe.jpg')" aria-label="View PPE and safe handling details"><span class="media-tag">Safe handling</span></a>
+        <a href="#service-sulphuric-acid" data-link class="media media-link m-flow" style="background-image:url('assets/services/service-01-sulphuric-acid.jpg')" aria-label="View sulphuric acid logistics details"><span class="media-tag">Timely logistics</span></a>
+        <a href="#service-hazardous-waste" data-link class="media media-link m-topo" style="background-image:url('assets/services/service-03-hazardous-waste.jpg')" aria-label="View hazardous waste compliance details"><span class="media-tag">Compliance</span></a>
       </div>
       <div class="split-text reveal" style="--d:1">
         <div class="eyebrow">Our commitment</div>
@@ -734,99 +890,99 @@ html[data-theme="dark"] .form-note{color:var(--accent);border-color:rgba(205,168
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
       </div>
       <div class="svc-grid">
-        <a href="#services" data-link class="svc-card reveal">
+        <a href="#service-sulphuric-acid" data-link class="svc-card reveal">
           <div class="svc-thumb">
-            <img src="assets/sulphuric_acid.png" alt="Sulphuric acid supply" loading="lazy">
+            <img src="assets/services/service-01-sulphuric-acid.jpg" alt="Sulphuric acid supply" loading="lazy">
           </div>
           <div class="svc-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3h6M10 3v6l-5.4 9.3A2 2 0 0 0 6.3 21h11.4a2 2 0 0 0 1.7-2.7L14 9V3"/><path d="M8 14h8"/></svg></div>
           <h4>Sulphuric Acid Supply</h4>
           <p>Bulk supply with safe handling, transport and timely delivery.</p>
           <span class="svc-more">View service →</span>
         </a>
-        <a href="#services" data-link class="svc-card reveal" style="--d:1">
+        <a href="#service-mining-chemicals" data-link class="svc-card reveal" style="--d:1">
           <div class="svc-thumb">
-            <img src="assets/sulphuric_acid.png" alt="Mining chemicals" loading="lazy">
+            <img src="assets/services/service-02-mining-chemicals.jpg" alt="Mining chemicals" loading="lazy">
           </div>
           <div class="svc-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3h12M8 3v6l-3.6 7.4A2 2 0 0 0 6.2 19h11.6a2 2 0 0 0 1.8-2.6L16 9V3"/><circle cx="11" cy="14" r="1"/><circle cx="14" cy="16" r="1"/></svg></div>
           <h4>Mining Chemicals</h4>
           <p>Reagents, processing chemicals and industrial consumables.</p>
           <span class="svc-more">View service →</span>
         </a>
-        <a href="#services" data-link class="svc-card reveal" style="--d:2">
+        <a href="#service-hazardous-waste" data-link class="svc-card reveal" style="--d:2">
           <div class="svc-thumb">
-            <img src="assets/hero_landing.png" alt="Hazardous waste management" loading="lazy">
+            <img src="assets/services/service-03-hazardous-waste.jpg" alt="Hazardous waste management" loading="lazy">
           </div>
           <div class="svc-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14M10 11v5M14 11v5"/></svg></div>
           <h4>Hazardous Waste Management</h4>
           <p>Collection, transport, safe disposal and site clean-up.</p>
           <span class="svc-more">View service →</span>
         </a>
-        <a href="#services" data-link class="svc-card reveal" style="--d:3">
+        <a href="#service-mining-equipment" data-link class="svc-card reveal" style="--d:3">
           <div class="svc-thumb">
-            <img src="assets/mining_equipment.png" alt="Mining equipment" loading="lazy">
+            <img src="assets/services/service-04-mining-equipment.jpg" alt="Mining equipment" loading="lazy">
           </div>
           <div class="svc-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 5.5a4 4 0 0 1-5.3 5.3L4 16v4h4l5.2-5.2a4 4 0 0 1 5.3-5.3l-3 3-2-.5-.5-2 3-3Z"/></svg></div>
           <h4>Mining Equipment</h4>
           <p>Drilling tools, conveyors, pumps, crushers and consumables.</p>
           <span class="svc-more">View service →</span>
         </a>
-        <a href="#services" data-link class="svc-card reveal">
+        <a href="#service-electrical-equipment" data-link class="svc-card reveal">
           <div class="svc-thumb">
-            <img src="assets/mining_equipment.png" alt="Electrical equipment" loading="lazy">
+            <img src="assets/services/service-05-electrical-equipment.jpg" alt="Electrical equipment" loading="lazy">
           </div>
           <div class="svc-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/></svg></div>
           <h4>Electrical Equipment</h4>
           <p>Industrial electrical equipment, cables, fittings and accessories.</p>
           <span class="svc-more">View service →</span>
         </a>
-        <a href="#services" data-link class="svc-card reveal" style="--d:1">
+        <a href="#service-ppe" data-link class="svc-card reveal" style="--d:1">
           <div class="svc-thumb">
-            <img src="assets/hero_landing.png" alt="Personal protective equipment" loading="lazy">
+            <img src="assets/services/service-06-ppe.jpg" alt="Personal protective equipment" loading="lazy">
           </div>
           <div class="svc-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 19h18v-2a9 9 0 0 0-18 0v2ZM10 8V5h4v3"/></svg></div>
           <h4>PPE Supply</h4>
           <p>Gloves, masks, protective suits and safety gear.</p>
           <span class="svc-more">View service →</span>
         </a>
-        <a href="#services" data-link class="svc-card reveal" style="--d:2">
+        <a href="#service-valves-flanges" data-link class="svc-card reveal" style="--d:2">
           <div class="svc-thumb">
-            <img src="assets/mining_equipment.png" alt="Industrial valves and flanges" loading="lazy">
+            <img src="assets/services/service-07-valves-flanges.jpg" alt="Industrial valves and flanges" loading="lazy">
           </div>
           <div class="svc-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="8"/><path d="M12 4v3M12 17v3M4 12h3M17 12h3M12 12l4-3"/></svg></div>
           <h4>Industrial Valves &amp; Flanges</h4>
           <p>Valves and flanges for fluid control and heavy industrial use.</p>
           <span class="svc-more">View service →</span>
         </a>
-        <a href="#services" data-link class="svc-card reveal" style="--d:3">
+        <a href="#service-construction-materials" data-link class="svc-card reveal" style="--d:3">
           <div class="svc-thumb">
-            <img src="assets/hero_landing.png" alt="Construction materials" loading="lazy">
+            <img src="assets/services/service-08-construction-materials.jpg" alt="Construction materials" loading="lazy">
           </div>
           <div class="svc-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21V8l9-5 9 5v13M3 21h18M9 21v-6h6v6M3 12h18"/></svg></div>
           <h4>Construction Materials</h4>
           <p>Cement, steel, aggregates, roofing materials and paints.</p>
           <span class="svc-more">View service →</span>
         </a>
-        <a href="#services" data-link class="svc-card reveal">
+        <a href="#service-laboratory-chemicals" data-link class="svc-card reveal">
           <div class="svc-thumb">
-            <img src="assets/sulphuric_acid.png" alt="Laboratory chemicals" loading="lazy">
+            <img src="assets/services/service-09-laboratory-chemicals.jpg" alt="Laboratory chemicals" loading="lazy">
           </div>
           <div class="svc-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.5 2h5M11 2v15.5a1.6 1.6 0 0 0 3.2 0V2"/><path d="M11 12h3.2"/></svg></div>
           <h4>Laboratory Chemicals</h4>
           <p>Reagents and chemicals for testing, analysis and quality control.</p>
           <span class="svc-more">View service →</span>
         </a>
-        <a href="#services" data-link class="svc-card reveal" style="--d:1">
+        <a href="#service-general-hardware" data-link class="svc-card reveal" style="--d:1">
           <div class="svc-thumb">
-            <img src="assets/mining_equipment.png" alt="General hardware" loading="lazy">
+            <img src="assets/services/service-10-general-hardware.jpg" alt="General hardware" loading="lazy">
           </div>
           <div class="svc-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3 5 7.2v9.6L12 21l7-4.2V7.2L12 3Z"/><circle cx="12" cy="12" r="3.3"/></svg></div>
           <h4>General Hardware</h4>
           <p>Hand tools, fasteners, plumbing and general consumables.</p>
           <span class="svc-more">View service →</span>
         </a>
-        <a href="#services" data-link class="svc-card reveal" style="--d:2">
+        <a href="#service-fire-extinguishers" data-link class="svc-card reveal" style="--d:2">
           <div class="svc-thumb">
-            <img src="assets/mining_equipment.png" alt="Fire extinguishers" loading="lazy">
+            <img src="assets/services/service-11-fire-extinguishers.jpg" alt="Fire extinguishers" loading="lazy">
           </div>
           <div class="svc-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2c1 3 4 4 4 8a4 4 0 0 1-8 0c0-2 1-3 2-4 1 1 2 2 2 4"/><path d="M7 14a5 5 0 0 0 10 0"/><path d="M9 22h6"/><path d="M10 18v4M14 18v4"/></svg></div>
           <h4>Fire Extinguishers</h4>
@@ -849,16 +1005,16 @@ html[data-theme="dark"] .form-note{color:var(--accent);border-color:rgba(205,168
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
       </div>
       <div class="cards">
-        <a href="#sectors" data-link class="card m-earth reveal">
+        <a href="#sector-mining" data-link class="card m-earth reveal" style="background-image:linear-gradient(to bottom, rgba(184,146,63,0.28), rgba(44,36,23,0.9)), url('assets/services/service-04-mining-equipment.jpg')">
           <span class="place">Copperbelt</span><h4>Mining &amp; mineral processing</h4>
           <span class="arr">Learn more →</span></a>
-        <a href="#sectors" data-link class="card m-grid reveal" style="--d:1">
+        <a href="#sector-manufacturing" data-link class="card m-grid reveal" style="--d:1;background-image:linear-gradient(to bottom, rgba(20,26,43,0.35), rgba(20,26,43,0.9)), url('assets/services/service-07-valves-flanges.jpg')">
           <span class="place">Industrial</span><h4>Manufacturing &amp; heavy industry</h4>
           <span class="arr">Learn more →</span></a>
-        <a href="#sectors" data-link class="card m-spark reveal" style="--d:2">
+        <a href="#sector-construction" data-link class="card m-spark reveal" style="--d:2;background-image:linear-gradient(to bottom, rgba(184,146,63,0.32), rgba(20,26,43,0.88)), url('assets/services/service-08-construction-materials.jpg')">
           <span class="place">Projects</span><h4>Construction &amp; infrastructure</h4>
           <span class="arr">Learn more →</span></a>
-        <a href="#sectors" data-link class="card m-topo reveal" style="--d:3">
+        <a href="#sector-commercial" data-link class="card m-topo reveal" style="--d:3;background-image:linear-gradient(to bottom, rgba(28,46,84,0.36), rgba(12,17,32,0.9)), url('assets/services/service-05-electrical-equipment.jpg')">
           <span class="place">Nationwide</span><h4>Commercial &amp; institutional</h4>
           <span class="arr">Learn more →</span></a>
       </div>
@@ -1117,10 +1273,10 @@ html[data-theme="dark"] .form-note{color:var(--accent);border-color:rgba(205,168
     <div class="wrap">
 
       <div class="offer reveal">
-        <div class="offer-media"><div class="media m-flow" style="min-height:380px;background-image:url('assets/sulphuric_acid.png')"><span class="media-tag">Sulphuric acid</span></div></div>
+        <div class="offer-media"><div class="media m-flow" style="min-height:380px;background-image:url('assets/services/service-01-sulphuric-acid.jpg')"><span class="media-tag">Sulphuric acid</span></div></div>
         <div>
           <span class="offer-num">Service 01</span>
-          <h3 class="h-md">Supply of Sulphuric Acid</h3>
+          <h3 class="h-md"><a href="#service-sulphuric-acid" data-link>Supply of Sulphuric Acid</a></h3>
           <p>We supply high-quality sulphuric acid to mining and industrial clients — ensuring
             safe handling, transportation and timely delivery while maintaining strict
             compliance with industry and environmental regulations.</p>
@@ -1135,10 +1291,10 @@ html[data-theme="dark"] .form-note{color:var(--accent);border-color:rgba(205,168
       </div>
 
       <div class="offer offer--rev reveal">
-        <div class="offer-media"><div class="media m-spark" style="min-height:380px;background-image:url('assets/sulphuric_acid.png');background-blend-mode:multiply;"><span class="media-tag">Mining chemicals</span></div></div>
+        <div class="offer-media"><div class="media m-spark" style="min-height:380px;background-image:url('assets/services/service-02-mining-chemicals.jpg');background-blend-mode:multiply;"><span class="media-tag">Mining chemicals</span></div></div>
         <div>
           <span class="offer-num">Service 02</span>
-          <h3 class="h-md">Mining Chemicals Supply</h3>
+          <h3 class="h-md"><a href="#service-mining-chemicals" data-link>Mining Chemicals Supply</a></h3>
           <p>We provide a wide range of mining chemicals used in mineral processing,
             extraction and refining — sourced from reputable manufacturers for consistency,
             performance and compliance with safety standards.</p>
@@ -1177,10 +1333,10 @@ html[data-theme="dark"] .form-note{color:var(--accent);border-color:rgba(205,168
       </div>
 
       <div class="offer reveal">
-        <div class="offer-media"><div class="media m-topo" style="min-height:380px;background-image:url('assets/hero_landing.png')"><span class="media-tag">Waste management</span></div></div>
+        <div class="offer-media"><div class="media m-topo" style="min-height:380px;background-image:url('assets/services/service-03-hazardous-waste.jpg')"><span class="media-tag">Waste management</span></div></div>
         <div>
           <span class="offer-num">Service 03</span>
-          <h3 class="h-md">Hazardous Waste Management</h3>
+          <h3 class="h-md"><a href="#service-hazardous-waste" data-link>Hazardous Waste Management</a></h3>
           <p>Environmental protection and safety are key priorities at Flaxio. We provide
             professional, fully regulated hazardous waste management — from collection and
             transport to treatment and controlled disposal — helping industries stay
@@ -1199,10 +1355,10 @@ html[data-theme="dark"] .form-note{color:var(--accent);border-color:rgba(205,168
       </div>
 
       <div class="offer offer--rev reveal">
-        <div class="offer-media"><div class="media m-grid" style="min-height:380px;background-image:url('assets/mining_equipment.png')"><span class="media-tag">Mining equipment</span></div></div>
+        <div class="offer-media"><div class="media m-grid" style="min-height:380px;background-image:url('assets/services/service-04-mining-equipment.jpg')"><span class="media-tag">Mining equipment</span></div></div>
         <div>
           <span class="offer-num">Service 04</span>
-          <h3 class="h-md">Mining Equipment Supply</h3>
+          <h3 class="h-md"><a href="#service-mining-equipment" data-link>Mining Equipment Supply</a></h3>
           <p>We supply durable, efficient equipment built for the demanding conditions of
             mining, construction and industrial operations — all meeting international
             standards and backed by after-sales support.</p>
@@ -1217,10 +1373,10 @@ html[data-theme="dark"] .form-note{color:var(--accent);border-color:rgba(205,168
       </div>
 
       <div class="offer reveal">
-        <div class="offer-media"><div class="media m-deep" style="min-height:380px;background-image:url('assets/mining_equipment.png')"><span class="media-tag">Electrical equipment</span></div></div>
+        <div class="offer-media"><div class="media m-deep" style="min-height:380px;background-image:url('assets/services/service-05-electrical-equipment.jpg')"><span class="media-tag">Electrical equipment</span></div></div>
         <div>
           <span class="offer-num">Service 05</span>
-          <h3 class="h-md">Electrical Equipment Supply</h3>
+          <h3 class="h-md"><a href="#service-electrical-equipment" data-link>Electrical Equipment Supply</a></h3>
           <p>Flaxio is a trusted supplier of electrical components and systems for industrial
             and commercial applications — quality products that enhance safety, energy
             efficiency and performance across operations.</p>
@@ -1235,10 +1391,10 @@ html[data-theme="dark"] .form-note{color:var(--accent);border-color:rgba(205,168
       </div>
 
       <div class="offer offer--rev reveal">
-        <div class="offer-media"><div class="media m-earth" style="min-height:380px;background-image:url('assets/hero_landing.png')"><span class="media-tag">PPE &amp; safety</span></div></div>
+        <div class="offer-media"><div class="media m-earth" style="min-height:380px;background-image:url('assets/services/service-06-ppe.jpg')"><span class="media-tag">PPE &amp; safety</span></div></div>
         <div>
           <span class="offer-num">Service 06</span>
-          <h3 class="h-md">Supply of PPE</h3>
+          <h3 class="h-md"><a href="#service-ppe" data-link>Supply of PPE</a></h3>
           <p>We supply high-quality personal protective equipment to safeguard the health and
             safety of workers handling hazardous materials.</p>
           <ul>
@@ -1251,10 +1407,10 @@ html[data-theme="dark"] .form-note{color:var(--accent);border-color:rgba(205,168
       </div>
 
       <div class="offer reveal">
-        <div class="offer-media"><div class="media m-flow" style="min-height:380px;background-image:url('assets/mining_equipment.png')"><span class="media-tag">Valves &amp; flanges</span></div></div>
+        <div class="offer-media"><div class="media m-flow" style="min-height:380px;background-image:url('assets/services/service-07-valves-flanges.jpg')"><span class="media-tag">Valves &amp; flanges</span></div></div>
         <div>
           <span class="offer-num">Service 07</span>
-          <h3 class="h-md">Industrial Valves &amp; Flanges</h3>
+          <h3 class="h-md"><a href="#service-valves-flanges" data-link>Industrial Valves &amp; Flanges</a></h3>
           <p>We supply high-quality industrial valves, flanges and related components for
             mining, industrial, commercial and infrastructure applications — for fluid
             control, pressure regulation, water and fuel systems, and heavy industrial
@@ -1270,10 +1426,10 @@ html[data-theme="dark"] .form-note{color:var(--accent);border-color:rgba(205,168
       </div>
 
       <div class="offer offer--rev reveal">
-        <div class="offer-media"><div class="media m-grid" style="min-height:380px;background-image:url('assets/hero_landing.png')"><span class="media-tag">Construction materials</span></div></div>
+        <div class="offer-media"><div class="media m-grid" style="min-height:380px;background-image:url('assets/services/service-08-construction-materials.jpg')"><span class="media-tag">Construction materials</span></div></div>
         <div>
           <span class="offer-num">Service 08</span>
-          <h3 class="h-md">Construction Material Supply</h3>
+          <h3 class="h-md"><a href="#service-construction-materials" data-link>Construction Material Supply</a></h3>
           <p>We supply premium construction materials for residential, commercial and
             industrial projects — with timely delivery and quality assurance to support
             project timelines and long-term durability.</p>
@@ -1287,10 +1443,10 @@ html[data-theme="dark"] .form-note{color:var(--accent);border-color:rgba(205,168
       </div>
 
       <div class="offer reveal">
-        <div class="offer-media"><div class="media m-spark" style="min-height:380px;background-image:url('assets/sulphuric_acid.png')"><span class="media-tag">Laboratory chemicals</span></div></div>
+        <div class="offer-media"><div class="media m-spark" style="min-height:380px;background-image:url('assets/services/service-09-laboratory-chemicals.jpg')"><span class="media-tag">Laboratory chemicals</span></div></div>
         <div>
           <span class="offer-num">Service 09</span>
-          <h3 class="h-md">Laboratory Chemicals Supply</h3>
+          <h3 class="h-md"><a href="#service-laboratory-chemicals" data-link>Laboratory Chemicals Supply</a></h3>
           <p>We supply high-grade laboratory chemicals and reagents used in testing, analysis
             and quality control — meeting international safety and purity standards for
             mining, environmental, educational and manufacturing laboratories.</p>
@@ -1304,10 +1460,10 @@ html[data-theme="dark"] .form-note{color:var(--accent);border-color:rgba(205,168
       </div>
 
       <div class="offer offer--rev reveal">
-        <div class="offer-media"><div class="media m-grid" style="min-height:380px;background-image:url('assets/mining_equipment.png')"><span class="media-tag">General hardware</span></div></div>
+        <div class="offer-media"><div class="media m-grid" style="min-height:380px;background-image:url('assets/services/service-10-general-hardware.jpg')"><span class="media-tag">General hardware</span></div></div>
         <div>
           <span class="offer-num">Service 10</span>
-          <h3 class="h-md">General Hardware Supply</h3>
+          <h3 class="h-md"><a href="#service-general-hardware" data-link>General Hardware Supply</a></h3>
           <p>We provide an extensive range of general hardware for construction, maintenance
             and industrial use — reliable products at competitive prices that help clients
             keep operations running and minimise downtime.</p>
@@ -1321,10 +1477,10 @@ html[data-theme="dark"] .form-note{color:var(--accent);border-color:rgba(205,168
       </div>
 
       <div class="offer reveal">
-        <div class="offer-media"><div class="media m-flow" style="min-height:380px;background-image:url('assets/mining_equipment.png')"><span class="media-tag">Fire extinguishers</span></div></div>
+        <div class="offer-media"><div class="media m-flow" style="min-height:380px;background-image:url('assets/services/service-11-fire-extinguishers.jpg')"><span class="media-tag">Fire extinguishers</span></div></div>
         <div>
           <span class="offer-num">Service 11</span>
-          <h3 class="h-md">Fire Extinguishers Supply</h3>
+          <h3 class="h-md"><a href="#service-fire-extinguishers" data-link>Fire Extinguishers Supply</a></h3>
           <p>We supply fire extinguishers and fire-safety equipment for mining, industrial,
             commercial and office environments — helping clients meet safety standards and
             protect people, equipment and facilities.</p>
@@ -1397,6 +1553,48 @@ html[data-theme="dark"] .form-note{color:var(--accent);border-color:rgba(205,168
 
 
 <!-- ======================================================================
+     PAGE: SERVICE DETAIL
+     ====================================================================== -->
+<section class="page" id="page-service">
+  <div class="page-head">
+    <div class="wrap">
+      <div class="crumb reveal" id="serviceCrumb">Home / Services</div>
+      <h1 class="h-xl reveal" id="serviceTitle" style="--d:1">Service detail</h1>
+      <p class="lede reveal" id="serviceLead" style="--d:2"></p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="wrap service-detail-grid">
+      <figure class="service-detail-media reveal">
+        <img id="serviceImage" src="assets/services/service-01-sulphuric-acid.jpg" alt="">
+      </figure>
+      <div class="service-detail-copy">
+        <div class="detail-panel reveal" style="--d:1">
+          <div class="eyebrow" id="serviceNumber">Service</div>
+          <h2 id="serviceSubhead">What we provide</h2>
+          <p id="serviceDescription"></p>
+        </div>
+        <div class="detail-panel reveal" style="--d:2">
+          <h3>What we supply</h3>
+          <ul class="detail-list" id="servicePoints"></ul>
+        </div>
+        <div class="detail-panel reveal" style="--d:3">
+          <h3>Typical support</h3>
+          <div class="detail-tags" id="serviceTags"></div>
+          <div class="offer-actions">
+            <a href="#contact" data-link class="btn btn--solid">Request this service
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+            <a href="#services" data-link class="btn btn--ghost">Back to services</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ======================================================================
      PAGE: SECTORS
      ====================================================================== -->
 <section class="page" id="page-sectors">
@@ -1412,8 +1610,8 @@ html[data-theme="dark"] .form-note{color:var(--accent);border-color:rgba(205,168
   <div class="section">
     <div class="wrap">
 
-      <div class="sector-detail reveal">
-        <div class="sd-media"><div class="media m-earth" style="min-height:380px"><span class="media-tag">Copperbelt</span></div></div>
+      <div class="sector-detail reveal" id="sector-mining">
+        <div class="sd-media"><a href="#service-mining-equipment" data-link class="media media-link m-earth" style="min-height:380px;background-image:url('assets/services/service-04-mining-equipment.jpg')" aria-label="View mining equipment supply details"><span class="media-tag">Copperbelt</span></a></div>
         <div>
           <div class="eyebrow">Sector 01</div>
           <h2 class="h-lg">Mining &amp; mineral processing</h2>
@@ -1428,8 +1626,8 @@ html[data-theme="dark"] .form-note{color:var(--accent);border-color:rgba(205,168
         </div>
       </div>
 
-      <div class="sector-detail sector-detail--rev reveal">
-        <div class="sd-media"><div class="media m-grid" style="min-height:380px"><span class="media-tag">Industry</span></div></div>
+      <div class="sector-detail sector-detail--rev reveal" id="sector-manufacturing">
+        <div class="sd-media"><a href="#service-valves-flanges" data-link class="media media-link m-grid" style="min-height:380px;background-image:url('assets/services/service-07-valves-flanges.jpg')" aria-label="View industrial valves and flanges details"><span class="media-tag">Industry</span></a></div>
         <div>
           <div class="eyebrow">Sector 02</div>
           <h2 class="h-lg">Manufacturing &amp; heavy industry</h2>
@@ -1443,8 +1641,8 @@ html[data-theme="dark"] .form-note{color:var(--accent);border-color:rgba(205,168
         </div>
       </div>
 
-      <div class="sector-detail reveal">
-        <div class="sd-media"><div class="media m-spark" style="min-height:380px"><span class="media-tag">Construction</span></div></div>
+      <div class="sector-detail reveal" id="sector-construction">
+        <div class="sd-media"><a href="#service-construction-materials" data-link class="media media-link m-spark" style="min-height:380px;background-image:url('assets/services/service-08-construction-materials.jpg')" aria-label="View construction material supply details"><span class="media-tag">Construction</span></a></div>
         <div>
           <div class="eyebrow">Sector 03</div>
           <h2 class="h-lg">Construction &amp; infrastructure</h2>
@@ -1457,8 +1655,8 @@ html[data-theme="dark"] .form-note{color:var(--accent);border-color:rgba(205,168
         </div>
       </div>
 
-      <div class="sector-detail sector-detail--rev reveal">
-        <div class="sd-media"><div class="media m-topo" style="min-height:380px"><span class="media-tag">Commercial</span></div></div>
+      <div class="sector-detail sector-detail--rev reveal" id="sector-commercial">
+        <div class="sd-media"><a href="#service-electrical-equipment" data-link class="media media-link m-topo" style="min-height:380px;background-image:url('assets/services/service-05-electrical-equipment.jpg')" aria-label="View electrical equipment supply details"><span class="media-tag">Commercial</span></a></div>
         <div>
           <div class="eyebrow">Sector 04</div>
           <h2 class="h-lg">Commercial &amp; institutional</h2>
@@ -1493,6 +1691,52 @@ html[data-theme="dark"] .form-note{color:var(--accent);border-color:rgba(205,168
 
 
 <!-- ======================================================================
+     PAGE: COOKIE POLICY
+     ====================================================================== -->
+<section class="page" id="page-cookies">
+  <div class="page-head">
+    <div class="wrap">
+      <div class="crumb reveal">Home / Cookie Policy</div>
+      <h1 class="h-xl reveal" style="--d:1">Cookie policy</h1>
+      <p class="lede reveal" style="--d:2">How this website uses essential storage, preferences and third-party resources.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="wrap">
+      <p class="lede reveal">Flaxio Investment Limited uses a small amount of browser storage to keep the website working well and remember visitor choices. We do not use this site to collect payment information or sell personal data.</p>
+      <div class="policy-list reveal" style="--d:1">
+        <article>
+          <h3>Essential website storage</h3>
+          <p>Essential storage supports basic site behaviour such as remembering whether the cookie notice has been accepted. These controls are required for the site to work smoothly.</p>
+        </article>
+        <article>
+          <h3>Preference storage</h3>
+          <p>Preference storage may remember display choices such as colour mode if enabled. This improves repeat visits without identifying you personally.</p>
+        </article>
+        <article>
+          <h3>Third-party resources</h3>
+          <p>The website loads fonts from Google Fonts. Your browser may connect to Google servers to fetch those files, which can expose standard technical data such as IP address and browser information to that provider.</p>
+        </article>
+        <article>
+          <h3>Analytics and marketing cookies</h3>
+          <p>This version of the website does not include analytics or advertising cookies. If analytics are added later, this policy should be updated to explain what is collected and how visitors can manage consent.</p>
+        </article>
+        <article>
+          <h3>Managing cookies</h3>
+          <p>You can clear or block cookies and site data in your browser settings. Blocking essential storage may cause the cookie notice or preferences to reappear.</p>
+        </article>
+        <article>
+          <h3>Contact</h3>
+          <p>For questions about this policy, email <a href="mailto:info@flaxioinvestment.com">info@flaxioinvestment.com</a>.</p>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ======================================================================
      PAGE: CONTACT
      ====================================================================== -->
 <section class="page" id="page-contact">
@@ -1508,25 +1752,24 @@ html[data-theme="dark"] .form-note{color:var(--accent);border-color:rgba(205,168
   <div class="section">
     <div class="wrap contact-grid">
 
-      <!-- form: front-end only — wire the send button to your backend/email -->
-      <div class="reveal">
+      <form class="quote-form reveal" id="quoteForm" novalidate>
         <div class="eyebrow">Request a quote</div>
         <h2 class="h-md" style="margin-bottom:28px">Tell us what you need</h2>
         <div class="field">
           <label for="cName">Full name</label>
-          <input id="cName" type="text" placeholder="Your name">
+          <input id="cName" name="name" type="text" placeholder="Your name" autocomplete="name" aria-describedby="formNote" required>
         </div>
         <div class="field">
           <label for="cCompany">Company / organisation</label>
-          <input id="cCompany" type="text" placeholder="Company name">
+          <input id="cCompany" name="company" type="text" placeholder="Company name" autocomplete="organization">
         </div>
         <div class="field">
           <label for="cEmail">Email address</label>
-          <input id="cEmail" type="email" placeholder="you@company.com">
+          <input id="cEmail" name="email" type="email" placeholder="you@company.com" autocomplete="email" aria-describedby="formNote" required>
         </div>
         <div class="field">
           <label for="cInterest">What can we help with?</label>
-          <select id="cInterest">
+          <select id="cInterest" name="interest">
             <option>Supply of sulphuric acid</option>
             <option>Mining chemicals supply</option>
             <option>Hazardous waste management</option>
@@ -1543,14 +1786,14 @@ html[data-theme="dark"] .form-note{color:var(--accent);border-color:rgba(205,168
         </div>
         <div class="field">
           <label for="cMsg">Your requirements</label>
-          <textarea id="cMsg" placeholder="Describe the products or quantities you need..."></textarea>
+          <textarea id="cMsg" name="message" placeholder="Describe the products or quantities you need..."></textarea>
         </div>
-        <button class="btn btn--solid" id="sendBtn">
+        <button class="btn btn--solid" id="sendBtn" type="submit">
           Send enquiry
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </button>
-        <div class="form-note" id="formNote"></div>
-      </div>
+        <div class="form-note" id="formNote" role="status" aria-live="polite"></div>
+      </form>
 
       <!-- info -->
       <div class="contact-info reveal" style="--d:1">
@@ -1560,11 +1803,11 @@ html[data-theme="dark"] .form-note{color:var(--accent);border-color:rgba(205,168
         </div>
         <div class="ci-row">
           <div class="ci-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg></div>
-          <div><h4>Call us</h4><p>+260 979 069 890<br>+260 760 794 185</p></div>
+          <div><h4>Call us</h4><p><a href="tel:+260979069890">+260 979 069 890</a><br><a href="tel:+260760794185">+260 760 794 185</a></p></div>
         </div>
         <div class="ci-row">
           <div class="ci-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></div>
-          <div><h4>Email us</h4><p>info@flaxioinvestment.com</p></div>
+          <div><h4>Email us</h4><p><a href="mailto:info@flaxioinvestment.com">info@flaxioinvestment.com</a></p></div>
         </div>
         <div class="ci-row">
           <div class="ci-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
@@ -1598,20 +1841,21 @@ html[data-theme="dark"] .form-note{color:var(--accent);border-color:rgba(205,168
         <a href="#about" data-link>About us</a>
         <a href="#services" data-link>Services</a>
         <a href="#sectors" data-link>Sectors</a>
+        <a href="#cookies" data-link>Cookie policy</a>
       </div>
       <div class="foot-col">
         <h5>Services</h5>
-        <a href="#services" data-link>Sulphuric acid supply</a>
-        <a href="#services" data-link>Mining chemicals</a>
-        <a href="#services" data-link>Mining &amp; electrical equipment</a>
-        <a href="#services" data-link>Hazardous waste management</a>
+        <a href="#service-sulphuric-acid" data-link>Sulphuric acid supply</a>
+        <a href="#service-mining-chemicals" data-link>Mining chemicals</a>
+        <a href="#service-mining-equipment" data-link>Mining equipment</a>
+        <a href="#service-hazardous-waste" data-link>Hazardous waste management</a>
       </div>
       <div class="foot-col">
         <h5>Get in touch</h5>
         <a href="#contact" data-link>1018 Blantyre Road, Kitwe</a>
-        <a href="#contact" data-link>+260 979 069 890</a>
-        <a href="#contact" data-link>+260 760 794 185</a>
-        <a href="#contact" data-link>info@flaxioinvestment.com</a>
+        <a href="tel:+260979069890" class="contact-action">+260 979 069 890</a>
+        <a href="tel:+260760794185" class="contact-action">+260 760 794 185</a>
+        <a href="mailto:info@flaxioinvestment.com" class="contact-action">info@flaxioinvestment.com</a>
       </div>
     </div>
     <div class="foot-bot">
@@ -1620,36 +1864,241 @@ html[data-theme="dark"] .form-note{color:var(--accent);border-color:rgba(205,168
         <a href="https://www.linkedin.com/in/innocent-manda-80b48b187/" target="_blank" rel="noopener noreferrer">Innocent Manda</a>
       </span>
       <div class="socials">
-        <a href="#" aria-label="LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5A2.5 2.5 0 1 1 0 3.5a2.5 2.5 0 0 1 4.98 0ZM0 8h5v16H0V8Zm7.5 0H12v2.2h.07c.62-1.18 2.14-2.43 4.43-2.43 4.74 0 5.5 3.12 5.5 7.17V24h-5v-7.3c0-1.74 0-3.98-2.42-3.98s-2.8 1.9-2.8 3.86V24h-5V8Z"/></svg></a>
-        <a href="#" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.45 2.9h-2.35v7A10 10 0 0 0 22 12Z"/></svg></a>
-        <a href="#" aria-label="Email"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a>
+        <a href="mailto:info@flaxioinvestment.com" aria-label="Email Flaxio"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a>
       </div>
     </div>
   </div>
 </footer>
 
+<aside class="cookie-banner" id="cookieBanner" aria-label="Cookie notice">
+  <p><strong>Cookie notice</strong>We use essential storage to remember this notice and basic preferences. This site does not currently use analytics or advertising cookies.</p>
+  <div class="cookie-actions">
+    <a href="#cookies" data-link class="btn btn--ghost">Cookie policy</a>
+    <button class="btn btn--solid" id="acceptCookies" type="button">Accept</button>
+  </div>
+</aside>
+
 <script>
 /* ============================ HASH ROUTER ============================ */
-var PAGES = ['home','about','services','sectors','contact'];
+var DEFAULT_TITLE = 'Flaxio Investment Limited — Mining & Industrial Supply, Kitwe Zambia';
+var PAGES = ['home','about','services','sectors','contact','cookies','service'];
+var PAGE_TITLES = {
+  home: DEFAULT_TITLE,
+  about: 'About Flaxio Investment Limited',
+  services: 'Services — Flaxio Investment Limited',
+  sectors: 'Sectors — Flaxio Investment Limited',
+  contact: 'Contact Flaxio Investment Limited',
+  cookies: 'Cookie Policy — Flaxio Investment Limited'
+};
+var SECTOR_DETAILS = {
+  'sector-mining': 'Mining & mineral processing — Flaxio Investment Limited',
+  'sector-manufacturing': 'Manufacturing & heavy industry — Flaxio Investment Limited',
+  'sector-construction': 'Construction & infrastructure — Flaxio Investment Limited',
+  'sector-commercial': 'Commercial & institutional — Flaxio Investment Limited'
+};
+var SERVICE_DETAILS = {
+  'service-sulphuric-acid': {
+    number: 'Service 01',
+    title: 'Supply of Sulphuric Acid',
+    lead: 'Bulk sulphuric acid supply with safe handling, transport and dependable delivery for mining and industrial operations.',
+    image: 'assets/services/service-01-sulphuric-acid.jpg',
+    imageAlt: 'Bulk sulphuric acid tanker and storage tanks at an industrial loading bay',
+    description: 'Flaxio supplies high-quality sulphuric acid to mining and industrial clients with careful logistics planning, controlled handling and attention to environmental compliance.',
+    points: ['Bulk sulphuric acid supply', 'Industrial chemical distribution', 'Safe transportation and logistics', 'Industrial chemical handling support', 'Various concentrations and grades'],
+    tags: ['Bulk supply', 'Safe handling', 'Mining operations', 'Industrial logistics']
+  },
+  'service-mining-chemicals': {
+    number: 'Service 02',
+    title: 'Mining Chemicals Supply',
+    lead: 'Processing reagents, industrial chemicals and consumables sourced for consistent performance in mineral operations.',
+    image: 'assets/services/service-02-mining-chemicals.jpg',
+    imageAlt: 'Sealed mining chemical drums and reagent totes in an industrial warehouse',
+    description: 'We support mineral processing, extraction and refining with chemicals from reputable manufacturers, helping clients maintain stable supply and reliable plant performance.',
+    points: ['Flotation reagents, collectors and frothers', 'Leaching agents and processing chemicals', 'Chemical handling solutions', 'Industrial consumables', 'Reagents including PAX, SIPX, SIBX, soda ash and caustic soda'],
+    tags: ['Mineral processing', 'Reagents', 'Industrial chemicals', 'Quality supply']
+  },
+  'service-hazardous-waste': {
+    number: 'Service 03',
+    title: 'Hazardous Waste Management',
+    lead: 'Regulated collection, transport, treatment and controlled disposal for hazardous industrial waste.',
+    image: 'assets/services/service-03-hazardous-waste.jpg',
+    imageAlt: 'Hazardous waste containers staged on a lined containment pad at an industrial facility',
+    description: 'Flaxio helps industrial sites manage hazardous waste responsibly through safe collection, stabilisation, movement and disposal practices aligned with environmental expectations.',
+    points: ['Hazardous waste collection and handling', 'Regulated waste transportation', 'Treatment, neutralisation and controlled disposal', 'Mine waste and tailings management', 'Industrial site clean-up and remediation'],
+    tags: ['Waste collection', 'Controlled disposal', 'Environmental compliance', 'Site remediation']
+  },
+  'service-mining-equipment': {
+    number: 'Service 04',
+    title: 'Mining Equipment Supply',
+    lead: 'Durable equipment, tools and consumables for mining, construction and industrial operations.',
+    image: 'assets/services/service-04-mining-equipment.jpg',
+    imageAlt: 'Mining drills, pumps and heavy-duty equipment staged in a mine supply yard',
+    description: 'We source practical, site-ready equipment for demanding environments, with support for spares, accessories and repeat supply requirements.',
+    points: ['Drilling machines, tools and accessories', 'Conveyors, pumps and crushers', 'Mining drilling tools and consumables', 'Safety gear and site equipment', 'Equipment sourcing and after-sales support'],
+    tags: ['Heavy equipment', 'Drilling tools', 'Pumps and conveyors', 'After-sales support']
+  },
+  'service-electrical-equipment': {
+    number: 'Service 05',
+    title: 'Electrical Equipment Supply',
+    lead: 'Industrial electrical components and systems that support safety, efficiency and dependable site performance.',
+    image: 'assets/services/service-05-electrical-equipment.jpg',
+    imageAlt: 'Switchgear cabinets, transformers and industrial electrical components in a clean supply room',
+    description: 'Flaxio supplies electrical equipment for industrial and commercial applications, from power distribution parts to fittings and site consumables.',
+    points: ['Transformers and switchgear', 'Power distribution units and control panels', 'Industrial and commercial lighting systems', 'Electrical cables, fittings and accessories', 'Safety electrical products and mining consumables'],
+    tags: ['Switchgear', 'Control panels', 'Cables and fittings', 'Power distribution']
+  },
+  'service-ppe': {
+    number: 'Service 06',
+    title: 'Supply of PPE',
+    lead: 'Protective equipment for teams working around chemicals, mining sites and industrial environments.',
+    image: 'assets/services/service-06-ppe.jpg',
+    imageAlt: 'Hard hats, gloves, respirators, protective clothing and safety gear arranged on shelves',
+    description: 'We supply PPE that helps clients protect workers, standardise safety readiness and keep compliant stock available for daily operations.',
+    points: ['Protective suits and coveralls', 'Gloves, masks and respirators', 'Helmets, eyewear and hearing protection', 'High-visibility safety gear', 'Site-ready safety packs'],
+    tags: ['Worker safety', 'Respirators', 'Protective clothing', 'Site readiness']
+  },
+  'service-valves-flanges': {
+    number: 'Service 07',
+    title: 'Industrial Valves & Flanges',
+    lead: 'Valves, flanges and pipe components for fluid control, pressure regulation and heavy industrial systems.',
+    image: 'assets/services/service-07-valves-flanges.jpg',
+    imageAlt: 'Large industrial valves, flanges and pipe fittings arranged in a workshop',
+    description: 'We supply durable components for mining, commercial, infrastructure and industrial systems where flow control and reliability matter.',
+    points: ['Fluid control and pressure-regulation valves', 'Industrial flanges and pipe connections', 'Water and fuel system valves', 'Valves for heavy industrial operations', 'Sourced to industry standards for durability'],
+    tags: ['Fluid control', 'Pipe systems', 'Pressure regulation', 'Durable components']
+  },
+  'service-construction-materials': {
+    number: 'Service 08',
+    title: 'Construction Material Supply',
+    lead: 'Core building materials supplied with quality assurance and practical logistics support.',
+    image: 'assets/services/service-08-construction-materials.jpg',
+    imageAlt: 'Construction materials including cement bags, steel rebar and roofing sheets in a supply yard',
+    description: 'Flaxio supports residential, commercial and industrial projects with reliable construction material sourcing and delivery.',
+    points: ['Cement, steel and aggregates', 'Roofing materials and paints', 'Structural components', 'Quality-assured supply', 'Timely delivery for project timelines'],
+    tags: ['Cement and steel', 'Roofing', 'Aggregates', 'Project delivery']
+  },
+  'service-laboratory-chemicals': {
+    number: 'Service 09',
+    title: 'Laboratory Chemicals Supply',
+    lead: 'High-grade laboratory chemicals, reagents and testing supplies for quality-control environments.',
+    image: 'assets/services/service-09-laboratory-chemicals.jpg',
+    imageAlt: 'Laboratory reagent bottles, sample vials and testing equipment on a clean lab bench',
+    description: 'We supply chemicals for testing, analysis and quality control across mining, environmental, educational and manufacturing laboratories.',
+    points: ['Analytical reagents and laboratory chemicals', 'Reagents for mineral testing and assay work', 'Environmental testing chemicals', 'Quality-control and calibration supplies', 'Purity and safety-focused sourcing'],
+    tags: ['Reagents', 'Assay work', 'Quality control', 'Testing supplies']
+  },
+  'service-general-hardware': {
+    number: 'Service 10',
+    title: 'General Hardware Supply',
+    lead: 'Tools, fittings, fasteners and general consumables for maintenance, construction and industrial work.',
+    image: 'assets/services/service-10-general-hardware.jpg',
+    imageAlt: 'Organized industrial hardware shelves with tools, fasteners and fittings',
+    description: 'Flaxio supplies reliable general hardware that helps operations keep maintenance work moving and reduce avoidable downtime.',
+    points: ['Hand tools and power tools', 'Fasteners, fixings and fittings', 'Plumbing materials and accessories', 'Safety wear and general consumables', 'Competitive sourcing for repeat supply'],
+    tags: ['Tools', 'Fasteners', 'Maintenance', 'Consumables']
+  },
+  'service-fire-extinguishers': {
+    number: 'Service 11',
+    title: 'Fire Extinguishers Supply',
+    lead: 'Fire extinguishers and safety equipment for mines, industrial facilities, offices and commercial sites.',
+    image: 'assets/services/service-11-fire-extinguishers.jpg',
+    imageAlt: 'Rows of portable fire extinguishers and fire safety equipment in an industrial safety room',
+    description: 'We supply fire-safety products that help clients protect people, equipment and facilities while supporting safety standards.',
+    points: ['Portable extinguishers including CO2, dry powder, foam and water', 'Refills, servicing and replacement units', 'Fire blankets, hoses and safety accessories', 'Signage, mounting brackets and site-ready delivery', 'Support for industrial and office environments'],
+    tags: ['Fire safety', 'Extinguishers', 'Refills', 'Site compliance']
+  }
+};
+
+function setText(id, value){
+  var el = document.getElementById(id);
+  if(el) el.textContent = value || '';
+}
+
+function renderServicePage(slug){
+  var service = SERVICE_DETAILS[slug];
+  if(!service) return false;
+  setText('serviceCrumb', 'Home / Services / ' + service.title);
+  setText('serviceTitle', service.title);
+  setText('serviceLead', service.lead);
+  setText('serviceNumber', service.number);
+  setText('serviceSubhead', 'What we provide');
+  setText('serviceDescription', service.description);
+  var image = document.getElementById('serviceImage');
+  if(image){
+    image.src = service.image;
+    image.alt = service.imageAlt;
+  }
+  var points = document.getElementById('servicePoints');
+  if(points){
+    points.textContent = '';
+    service.points.forEach(function(point){
+      var li = document.createElement('li');
+      li.textContent = point;
+      points.appendChild(li);
+    });
+  }
+  var tags = document.getElementById('serviceTags');
+  if(tags){
+    tags.textContent = '';
+    service.tags.forEach(function(tag){
+      var span = document.createElement('span');
+      span.className = 'tag';
+      span.textContent = tag;
+      tags.appendChild(span);
+    });
+  }
+  document.title = service.title + ' — Flaxio Investment Limited';
+  return true;
+}
 
 function showPage(id){
-  if(PAGES.indexOf(id) === -1) id = 'home';
+  id = id || 'home';
+  var pageId = id;
+  var navId = id;
+  var scrollTarget = null;
+  if(SERVICE_DETAILS[id]){
+    renderServicePage(id);
+    pageId = 'service';
+    navId = 'services';
+  }else if(SECTOR_DETAILS[id]){
+    pageId = 'sectors';
+    navId = 'sectors';
+    scrollTarget = id;
+    document.title = SECTOR_DETAILS[id];
+  }else if(PAGES.indexOf(id) === -1 || id === 'service'){
+    pageId = 'home';
+    navId = 'home';
+    document.title = DEFAULT_TITLE;
+  }else{
+    document.title = PAGE_TITLES[id] || DEFAULT_TITLE;
+  }
   document.querySelectorAll('.page').forEach(function(p){p.classList.remove('is-active');});
-  var el = document.getElementById('page-'+id);
+  var el = document.getElementById('page-'+pageId);
   if(el) el.classList.add('is-active');
   document.querySelectorAll('[data-nav]').forEach(function(n){
-    n.classList.toggle('is-current', n.getAttribute('data-nav') === id);
+    var current = n.getAttribute('data-nav') === navId;
+    n.classList.toggle('is-current', current);
+    if(current) n.setAttribute('aria-current','page');
+    else n.removeAttribute('aria-current');
   });
   window.scrollTo(0,0);
   closeMenu();
   observeReveals();
+  if(scrollTarget){
+    setTimeout(function(){
+      var target = document.getElementById(scrollTarget);
+      if(target) target.scrollIntoView({block:'start'});
+    },80);
+  }
 }
 
 document.addEventListener('click', function(e){
   var link = e.target.closest('[data-link]');
   if(!link) return;
+  var href = link.getAttribute('href') || '';
+  if(href.charAt(0) !== '#') return;
   e.preventDefault();
-  var id = (link.getAttribute('href')||'#home').replace('#','');
+  var id = href.replace('#','');
   if(('#'+id) === window.location.hash){ showPage(id); }
   else { window.location.hash = id; }
 });
@@ -1659,21 +2108,24 @@ window.addEventListener('hashchange', function(){
 });
 
 /* ============================ SCROLL REVEAL ============================ */
-var revealObserver = new IntersectionObserver(function(entries){
-  entries.forEach(function(en){
-    if(en.isIntersecting){
-      en.target.classList.add('in');
-      revealObserver.unobserve(en.target);
-    }
-  });
-},{threshold:0.12, rootMargin:'0px 0px -40px 0px'});
+var revealObserver = 'IntersectionObserver' in window
+  ? new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){
+          en.target.classList.add('in');
+          revealObserver.unobserve(en.target);
+        }
+      });
+    },{threshold:0.12, rootMargin:'0px 0px -40px 0px'})
+  : null;
 
 function observeReveals(){
   var active = document.querySelector('.page.is-active');
   if(!active) return;
   active.querySelectorAll('.reveal').forEach(function(el){
     el.classList.remove('in');
-    revealObserver.observe(el);
+    if(revealObserver) revealObserver.observe(el);
+    else el.classList.add('in');
   });
 }
 
@@ -1684,9 +2136,17 @@ window.addEventListener('scroll', function(){
 });
 
 /* ============================ MOBILE MENU ============================ */
-function closeMenu(){ document.body.classList.remove('nav-open'); }
-document.getElementById('burger').addEventListener('click', function(){
-  document.body.classList.toggle('nav-open');
+var burger = document.getElementById('burger');
+function setMenuState(open){
+  document.body.classList.toggle('nav-open', open);
+  if(burger){
+    burger.setAttribute('aria-expanded', String(open));
+    burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  }
+}
+function closeMenu(){ setMenuState(false); }
+burger.addEventListener('click', function(){
+  setMenuState(!document.body.classList.contains('nav-open'));
 });
 document.addEventListener('click', function(e){
   if(!document.body.classList.contains('nav-open')) return;
@@ -1695,59 +2155,91 @@ document.addEventListener('click', function(e){
 });
 
 /* ============================ THEME TOGGLE ============================ */
-document.getElementById('themeToggle').addEventListener('click', function(){
+var themeToggle = document.getElementById('themeToggle');
+themeToggle.addEventListener('click', function(){
   var html = document.documentElement;
-  html.setAttribute('data-theme',
-    html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+  var nextTheme = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  html.setAttribute('data-theme', nextTheme);
+  themeToggle.setAttribute('aria-pressed', String(nextTheme === 'dark'));
 });
 
 /* ============================ CONTACT FORM ============================ */
-document.getElementById('sendBtn').addEventListener('click', function(){
-  var btn = document.getElementById('sendBtn');
-  var name = document.getElementById('cName').value.trim();
+var quoteForm = document.getElementById('quoteForm');
+var note = document.getElementById('formNote');
+
+function setFormNote(message, type){
+  note.className = 'form-note ' + (type === 'error' ? 'is-error' : 'is-success');
+  note.textContent = message;
+  note.style.display = 'block';
+}
+
+quoteForm.addEventListener('submit', function(e){
+  e.preventDefault();
+  var nameField = document.getElementById('cName');
+  var emailField = document.getElementById('cEmail');
+  var name = nameField.value.trim();
+  var company = document.getElementById('cCompany').value.trim();
   var email = document.getElementById('cEmail').value.trim();
-  var note = document.getElementById('formNote');
+  var interest = document.getElementById('cInterest').value;
+  var message = document.getElementById('cMsg').value.trim();
+  nameField.removeAttribute('aria-invalid');
+  emailField.removeAttribute('aria-invalid');
   
   if(!name || !email){
-    note.style.display = 'block';
-    note.style.background = 'rgba(184,92,56,.12)';
-    note.style.color = 'var(--accent)';
-    note.style.borderColor = 'rgba(184,92,56,.25)';
-    note.innerHTML = '<span style="display:inline-flex;align-items:center;gap:8px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg> Please add at least your name and email so we can reply.</span>';
+    if(!name) nameField.setAttribute('aria-invalid','true');
+    if(!email) emailField.setAttribute('aria-invalid','true');
+    setFormNote('Please add your name and email so we can reply.', 'error');
     return;
   }
 
-  // Simulated server submission animation
-  var originalHtml = btn.innerHTML;
-  btn.disabled = true;
-  btn.style.opacity = '0.78';
-  btn.innerHTML = 'Connecting safely... <svg class="spinner" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="animation: spin 0.8s linear infinite"><circle cx="12" cy="12" r="10" stroke-dasharray="32" stroke-dashoffset="10"/></svg><style>@keyframes spin{to{transform:rotate(360deg)}}</style>';
-  note.style.display = 'none';
+  if(!emailField.validity.valid){
+    emailField.setAttribute('aria-invalid','true');
+    setFormNote('Please enter a valid email address.', 'error');
+    return;
+  }
 
-  setTimeout(function(){
-    btn.disabled = false;
-    btn.style.opacity = '';
-    btn.innerHTML = originalHtml;
-    
-    note.style.display = 'block';
-    note.style.background = 'rgba(28,46,84,.08)';
-    note.style.color = 'var(--primary)';
-    note.style.borderColor = 'rgba(28,46,84,.2)';
-    
-    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    if(isDark){
-      note.style.background = 'rgba(205,168,90,.1)';
-      note.style.color = 'var(--accent)';
-      note.style.borderColor = 'rgba(205,168,90,.25)';
-    }
-
-    note.innerHTML = '<span style="display:inline-flex;align-items:center;gap:8px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Thank you, ' + name + ' — your request has been logged. Our logistics team will contact you shortly.</span>';
-    
-    ['cName','cCompany','cEmail','cMsg'].forEach(function(f){
-      document.getElementById(f).value = '';
-    });
-  }, 1100);
+  var body = [
+    'Name: ' + name,
+    'Company: ' + (company || 'Not provided'),
+    'Email: ' + email,
+    'Interest: ' + interest,
+    '',
+    'Requirements:',
+    message || 'Not provided'
+  ].join('\n');
+  var mailto = 'mailto:info@flaxioinvestment.com'
+    + '?subject=' + encodeURIComponent('Flaxio enquiry: ' + interest)
+    + '&body=' + encodeURIComponent(body);
+  setFormNote('Your email app should open with the enquiry prepared. Review it, then send.', 'success');
+  window.location.href = mailto;
 });
+
+['cName','cEmail'].forEach(function(id){
+  document.getElementById(id).addEventListener('input', function(e){
+    e.target.removeAttribute('aria-invalid');
+  });
+});
+
+/* ============================ COOKIE NOTICE ============================ */
+var cookieBanner = document.getElementById('cookieBanner');
+var acceptCookies = document.getElementById('acceptCookies');
+function readStorage(key){
+  try { return window.localStorage.getItem(key); }
+  catch(e){ return null; }
+}
+function writeStorage(key, value){
+  try { window.localStorage.setItem(key, value); }
+  catch(e){}
+}
+if(cookieBanner && readStorage('flaxioCookieConsent') !== 'accepted'){
+  cookieBanner.classList.add('is-visible');
+}
+if(acceptCookies){
+  acceptCookies.addEventListener('click', function(){
+    writeStorage('flaxioCookieConsent', 'accepted');
+    cookieBanner.classList.remove('is-visible');
+  });
+}
 
 /* ============================ INIT ============================ */
 showPage((window.location.hash||'#home').replace('#',''));
