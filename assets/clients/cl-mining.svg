@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" role="img" aria-labelledby="title desc">
+  <title id="title">CL Mining</title>
+  <desc id="desc">Generic CL Mining wordmark</desc>
+  <rect width="720" height="320" rx="0" fill="#173752"/>
+  <g transform="translate(68 74)">
+    <rect x="0" y="0" width="172" height="172" rx="34" fill="#f8fcff"/>
+    <path d="M116 55c-11-13-27-21-47-21-32 0-55 23-55 52s23 52 55 52c20 0 36-8 47-21l-24-22c-5 7-13 11-23 11-14 0-25-9-25-20s11-20 25-20c10 0 18 4 23 11l24-22Z" fill="#173752"/>
+    <path d="M123 37h34v70h54v31h-88V37Z" fill="#caa348"/>
+  </g>
+  <text x="294" y="145" fill="#f8fcff" font-family="Arial, Helvetica, sans-serif" font-size="74" font-weight="800" letter-spacing="3">CL</text>
+  <text x="294" y="213" fill="#caa348" font-family="Arial, Helvetica, sans-serif" font-size="54" font-weight="700" letter-spacing="5">MINING</text>
+</svg>

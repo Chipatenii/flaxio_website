@@ -215,7 +215,7 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:600;line-height:1.04;let
   transition:height .3s ease,background .3s ease,border-color .3s ease;
 }
 .site-header.scrolled{height:64px;background:#fff;border-color:var(--line)}
-.header-inner{display:flex;align-items:center;justify-content:space-between;width:100%;gap:16px;min-width:0}
+.header-inner{display:flex;align-items:center;justify-content:space-between;width:100%;gap:16px;min-width:0;box-sizing:border-box}
 .brand{display:flex;align-items:center;gap:13px;font-family:var(--font-serif);
   font-weight:600;font-size:1.15rem;letter-spacing:.085em;min-width:0}
 .brand-mark{height:58px;width:auto;flex:none;display:block;object-fit:contain}
@@ -440,11 +440,12 @@ html[data-theme="dark"] .value .vi{color:var(--accent)}
 
 /* clients */
 .clients{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.client{border:1px solid var(--line);border-radius:12px;padding:28px 20px;
-  background:var(--bg);display:flex;align-items:center;justify-content:center;
-  text-align:center;min-height:112px;transition:.25s}
-.client:hover{border-color:var(--accent);background:var(--bg-alt);transform:translateY(-4px)}
-.client span{font-family:var(--font-display);font-weight:600;font-size:.98rem;color:var(--ink)}
+.client{border:1px solid var(--line);border-radius:12px;padding:18px;
+  background:var(--bg-alt);display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:14px;text-align:center;min-height:164px;transition:.25s}
+.client:hover{border-color:var(--accent);background:#fff;transform:translateY(-4px)}
+.client-logo{width:100%;height:90px;object-fit:contain;display:block}
+.client-name{font-family:var(--font-display);font-weight:600;font-size:.98rem;line-height:1.18;color:var(--ink)}
 
 /* HSE band */
 .hse{background:var(--primary);color:#e9ebf1;position:relative;overflow:hidden}
@@ -720,11 +721,14 @@ html[data-theme="dark"] .form-note.is-success{color:var(--accent);border-color:r
 
 @media(max-width:560px){
   .wrap{padding:0 20px}
-  .header-inner{gap:12px}
-  .brand-mark{height:44px}
-  .icon-btn,.burger{width:38px;height:38px}
-  #themeToggle{display:none}
-  .header-actions{gap:8px}
+  .header-inner{gap:12px;position:relative}
+  .site-header .brand{max-width:calc(100% - 94px)}
+  .brand-mark{height:38px}
+  .icon-btn,.burger{width:36px;height:36px}
+  .header-actions{position:static;transform:none;margin-left:auto;gap:6px}
+  .client{min-height:154px;padding:16px}
+  .client-logo{height:78px}
+  .client-name{font-size:.94rem}
   .eyebrow{font-size:.66rem;letter-spacing:.12em;line-height:1.55;flex-wrap:wrap}
   .eyebrow::before{width:28px}
   .h-xl,.hero h1,.page-head h1{font-size:2.35rem;line-height:1.08;max-width:100%}
@@ -1075,13 +1079,13 @@ html[data-theme="dark"] .form-note.is-success{color:var(--accent);border-color:r
       <p class="sec-intro reveal">We are proud to supply and partner with established mining,
         industrial and construction organisations across Zambia.</p>
       <div class="clients reveal">
-        <div class="client"><span>China Copper Mine</span></div>
-        <div class="client"><span>Polytra Zambia Limited</span></div>
-        <div class="client"><span>Scamont &amp; Karlsons Mining Solutions</span></div>
-        <div class="client"><span>CL Mining</span></div>
-        <div class="client"><span>Wheals Construction</span></div>
-        <div class="client"><span>Sunline Supply Chain</span></div>
-        <div class="client"><span>COZ Minerals</span></div>
+        <div class="client"><img class="client-logo" src="assets/clients/china-copper-mine.png" alt="China Copper Mine logo"><span class="client-name">China Copper Mine</span></div>
+        <div class="client"><img class="client-logo" src="assets/clients/polytra-zambia-limited.png" alt="Polytra Zambia Limited logo"><span class="client-name">Polytra Zambia Limited</span></div>
+        <div class="client"><img class="client-logo" src="assets/clients/scamont-karlsons-mining-solutions.png" alt="Scamont and Karlsons Mining Solutions logo"><span class="client-name">Scamont &amp; Karlsons Mining Solutions</span></div>
+        <div class="client"><img class="client-logo" src="assets/clients/cl-mining.svg" alt="CL Mining wordmark"><span class="client-name">CL Mining</span></div>
+        <div class="client"><img class="client-logo" src="assets/clients/wheals-construction.png" alt="Wheals Construction logo"><span class="client-name">Wheals Construction</span></div>
+        <div class="client"><img class="client-logo" src="assets/clients/sunline-supply-chain.png" alt="Sunline Supply Chain logo"><span class="client-name">Sunline Supply Chain</span></div>
+        <div class="client"><img class="client-logo" src="assets/clients/coz-minerals.png" alt="COZ Minerals Limited logo"><span class="client-name">COZ Minerals Limited</span></div>
       </div>
     </div>
   </div>
