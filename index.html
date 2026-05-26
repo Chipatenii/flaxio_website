@@ -107,7 +107,7 @@
   --line:rgba(20,26,43,.13);
   --line-strong:rgba(20,26,43,.26);
   --shadow:0 30px 60px -28px rgba(17,32,63,.4);
-  --header-h:78px;
+  --header-h:68px;
   --maxw:1240px;
 }
 html[data-theme="dark"]{
@@ -214,13 +214,13 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:600;line-height:1.04;let
   border-bottom:1px solid transparent;
   transition:height .3s ease,background .3s ease,border-color .3s ease;
 }
-.site-header.scrolled{height:64px;background:#fff;border-color:var(--line)}
+.site-header.scrolled{height:58px;background:#fff;border-color:var(--line)}
 .header-inner{display:flex;align-items:center;justify-content:space-between;width:100%;gap:16px;min-width:0;box-sizing:border-box}
 .brand{display:flex;align-items:center;gap:13px;font-family:var(--font-serif);
   font-weight:600;font-size:1.15rem;letter-spacing:.085em;min-width:0}
-.brand-mark{height:58px;width:auto;flex:none;display:block;object-fit:contain}
-.site-header.scrolled .brand-mark{height:48px;transition:height .3s ease}
-.foot-brand .brand-mark{height:78px;background:#fff;padding:8px 12px;
+.brand-mark{height:44px;width:auto;flex:none;display:block;object-fit:contain}
+.site-header.scrolled .brand-mark{height:36px;transition:height .3s ease}
+.foot-brand .brand-mark{height:64px;background:#fff;padding:8px 12px;
   border-radius:12px;box-shadow:0 6px 20px -10px rgba(0,0,0,.4)}
 html[data-theme="dark"] .site-header .brand-mark{background:#fff;padding:6px 8px;
   border-radius:10px}
@@ -479,9 +479,10 @@ html[data-theme="dark"] .why-grid .value:first-child{background:linear-gradient(
 
 /* clients */
 .clients{--client-gap:16px;position:relative}
-.client-frame{overflow:hidden;padding:2px 0 16px}
+.client-frame{overflow:hidden;padding:2px 0 16px;contain:layout paint}
 .client-track{display:flex;gap:var(--client-gap);width:max-content;
-  animation:clientMarquee 34s linear infinite;will-change:transform}
+  animation:clientMarquee 34s linear infinite;will-change:transform;
+  transform:translateZ(0);backface-visibility:hidden}
 .client-set{display:flex;gap:var(--client-gap)}
 .client-frame:hover .client-track,.client-frame:focus-within .client-track{animation-play-state:paused}
 .client{border:1px solid var(--line);border-radius:12px;padding:18px;
@@ -689,7 +690,7 @@ html[data-theme="dark"] .form-note.is-success{color:var(--accent);border-color:r
   .why-grid{grid-template-columns:repeat(2,1fr)}
   .why-grid .value:first-child{grid-column:span 2;grid-row:auto;min-height:260px}
   .why-grid .value:first-child h4{max-width:14ch}
-  .client{flex-basis:calc((100vw - 72px)/2)}
+  .client{flex:0 0 calc((100vw - 88px)/3)}
   .stats{grid-template-columns:repeat(2,1fr)}
   .stat:nth-child(2){border-right:none}
   .stat:nth-child(1),.stat:nth-child(2){border-bottom:1px solid var(--line)}
@@ -746,7 +747,7 @@ html[data-theme="dark"] .form-note.is-success{color:var(--accent);border-color:r
   .why-grid .value:first-child h4{font-size:1.38rem;max-width:100%}
   .why-grid .value:first-child p{max-width:100%}
   .client-frame{margin-left:-20px;margin-right:-20px;padding-left:20px}
-  .client{flex-basis:min(82vw,320px);min-height:156px}
+  .client{flex:0 0 min(64vw,240px);min-height:156px}
   .grid-2 .media:nth-child(odd){margin-top:0}
   .grid-2 .media{min-height:200px}
   .offer .media,.sector-detail .media{min-height:230px!important}
@@ -778,8 +779,8 @@ html[data-theme="dark"] .form-note.is-success{color:var(--accent);border-color:r
 @media(max-width:420px){
   .wrap{padding:0 16px}
   .brand{font-size:1.04rem;gap:10px}
-  .brand-mark{height:46px}
-  .foot-brand .brand-mark{height:64px}
+  .brand-mark{height:34px}
+  .foot-brand .brand-mark{height:56px}
   .hero h1{font-size:clamp(2.5rem,11vw,3.2rem)}
   .stats{grid-template-columns:1fr}
   .stat{border-right:none;border-bottom:1px solid var(--line);padding:30px 22px}
@@ -791,7 +792,7 @@ html[data-theme="dark"] .form-note.is-success{color:var(--accent);border-color:r
   .wrap{padding:0 20px}
   .header-inner{gap:12px;position:relative}
   .site-header .brand{max-width:calc(100% - 94px)}
-  .brand-mark{height:38px}
+  .brand-mark{height:36px}
   .icon-btn,.burger{width:36px;height:36px}
   .header-actions{position:static;transform:none;margin-left:auto;gap:6px}
   .client{min-height:154px;padding:16px}
@@ -1152,24 +1153,24 @@ html[data-theme="dark"] .form-note.is-success{color:var(--accent);border-color:r
         <div class="client-frame">
           <div class="client-track" id="clientTrack">
             <div class="client-set">
-              <div class="client"><img class="client-logo" src="assets/clients/china-copper-mine.png" alt="China Copper Mine logo"><span class="client-name">China Copper Mine</span></div>
-              <div class="client"><img class="client-logo" src="assets/clients/polytra-zambia-limited.png" alt="Polytra Zambia Limited logo"><span class="client-name">Polytra Zambia Limited</span></div>
-              <div class="client"><img class="client-logo" src="assets/clients/scamont-karlsons-mining-solutions.png" alt="Scamont and Karlsons Mining Solutions logo"><span class="client-name">Scamont &amp; Karlsons Mining Solutions</span></div>
-              <div class="client"><img class="client-logo" src="assets/clients/curechem.png" alt="CureChem logo"><span class="client-name">CureChem</span></div>
-              <div class="client"><img class="client-logo" src="assets/clients/cl-mining.svg" alt="CL Mining wordmark"><span class="client-name">CL Mining</span></div>
-              <div class="client"><img class="client-logo" src="assets/clients/wheals-construction.png" alt="Wheals Construction logo"><span class="client-name">Wheals Construction</span></div>
-              <div class="client"><img class="client-logo" src="assets/clients/sunline-supply-chain.png" alt="Sunline Supply Chain logo"><span class="client-name">Sunline Supply Chain</span></div>
-              <div class="client"><img class="client-logo" src="assets/clients/coz-minerals.png" alt="COZ Minerals Limited logo"><span class="client-name">COZ Minerals Limited</span></div>
+              <div class="client"><img class="client-logo" src="assets/clients/china-copper-mine.png" alt="China Copper Mine logo" width="240" height="96" loading="eager" decoding="async"><span class="client-name">China Copper Mine</span></div>
+              <div class="client"><img class="client-logo" src="assets/clients/polytra-zambia-limited.png" alt="Polytra Zambia Limited logo" width="240" height="96" loading="eager" decoding="async"><span class="client-name">Polytra Zambia Limited</span></div>
+              <div class="client"><img class="client-logo" src="assets/clients/scamont-karlsons-mining-solutions.png" alt="Scamont and Karlsons Mining Solutions logo" width="240" height="96" loading="eager" decoding="async"><span class="client-name">Scamont &amp; Karlsons Mining Solutions</span></div>
+              <div class="client"><img class="client-logo" src="assets/clients/curechem.png" alt="CureChem logo" width="240" height="96" loading="eager" decoding="async"><span class="client-name">CureChem</span></div>
+              <div class="client"><img class="client-logo" src="assets/clients/cl-mining.svg" alt="CL Mining wordmark" width="240" height="96" loading="eager" decoding="async"><span class="client-name">CL Mining</span></div>
+              <div class="client"><img class="client-logo" src="assets/clients/wheals-construction.png" alt="Wheals Construction logo" width="240" height="96" loading="eager" decoding="async"><span class="client-name">Wheals Construction</span></div>
+              <div class="client"><img class="client-logo" src="assets/clients/sunline-supply-chain.png" alt="Sunline Supply Chain logo" width="240" height="96" loading="eager" decoding="async"><span class="client-name">Sunline Supply Chain</span></div>
+              <div class="client"><img class="client-logo" src="assets/clients/coz-minerals.png" alt="COZ Minerals Limited logo" width="240" height="96" loading="eager" decoding="async"><span class="client-name">COZ Minerals Limited</span></div>
             </div>
             <div class="client-set" aria-hidden="true">
-              <div class="client"><img class="client-logo" src="assets/clients/china-copper-mine.png" alt=""><span class="client-name">China Copper Mine</span></div>
-              <div class="client"><img class="client-logo" src="assets/clients/polytra-zambia-limited.png" alt=""><span class="client-name">Polytra Zambia Limited</span></div>
-              <div class="client"><img class="client-logo" src="assets/clients/scamont-karlsons-mining-solutions.png" alt=""><span class="client-name">Scamont &amp; Karlsons Mining Solutions</span></div>
-              <div class="client"><img class="client-logo" src="assets/clients/curechem.png" alt=""><span class="client-name">CureChem</span></div>
-              <div class="client"><img class="client-logo" src="assets/clients/cl-mining.svg" alt=""><span class="client-name">CL Mining</span></div>
-              <div class="client"><img class="client-logo" src="assets/clients/wheals-construction.png" alt=""><span class="client-name">Wheals Construction</span></div>
-              <div class="client"><img class="client-logo" src="assets/clients/sunline-supply-chain.png" alt=""><span class="client-name">Sunline Supply Chain</span></div>
-              <div class="client"><img class="client-logo" src="assets/clients/coz-minerals.png" alt=""><span class="client-name">COZ Minerals Limited</span></div>
+              <div class="client"><img class="client-logo" src="assets/clients/china-copper-mine.png" alt="" width="240" height="96" loading="lazy" decoding="async"><span class="client-name">China Copper Mine</span></div>
+              <div class="client"><img class="client-logo" src="assets/clients/polytra-zambia-limited.png" alt="" width="240" height="96" loading="lazy" decoding="async"><span class="client-name">Polytra Zambia Limited</span></div>
+              <div class="client"><img class="client-logo" src="assets/clients/scamont-karlsons-mining-solutions.png" alt="" width="240" height="96" loading="lazy" decoding="async"><span class="client-name">Scamont &amp; Karlsons Mining Solutions</span></div>
+              <div class="client"><img class="client-logo" src="assets/clients/curechem.png" alt="" width="240" height="96" loading="lazy" decoding="async"><span class="client-name">CureChem</span></div>
+              <div class="client"><img class="client-logo" src="assets/clients/cl-mining.svg" alt="" width="240" height="96" loading="lazy" decoding="async"><span class="client-name">CL Mining</span></div>
+              <div class="client"><img class="client-logo" src="assets/clients/wheals-construction.png" alt="" width="240" height="96" loading="lazy" decoding="async"><span class="client-name">Wheals Construction</span></div>
+              <div class="client"><img class="client-logo" src="assets/clients/sunline-supply-chain.png" alt="" width="240" height="96" loading="lazy" decoding="async"><span class="client-name">Sunline Supply Chain</span></div>
+              <div class="client"><img class="client-logo" src="assets/clients/coz-minerals.png" alt="" width="240" height="96" loading="lazy" decoding="async"><span class="client-name">COZ Minerals Limited</span></div>
             </div>
           </div>
         </div>
