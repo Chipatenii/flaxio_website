@@ -1,0 +1,233 @@
+{
+  "sulphuric-acid": {
+    "number": "Service 01",
+    "title": "Supply of Sulphuric Acid",
+    "lead": "Bulk sulphuric acid supply with safe handling, transport and dependable delivery for mining and industrial operations.",
+    "image": "assets/services/service-01-sulphuric-acid.webp",
+    "imageAlt": "Bulk sulphuric acid tanker and storage tanks at an industrial loading bay",
+    "description": "Flaxio supplies high-quality sulphuric acid to mining and industrial clients with careful logistics planning, controlled handling and attention to environmental compliance.",
+    "points": [
+      "Bulk sulphuric acid supply",
+      "Industrial chemical distribution",
+      "Safe transportation and logistics",
+      "Industrial chemical handling support",
+      "Various concentrations and grades"
+    ],
+    "tags": [
+      "Bulk supply",
+      "Safe handling",
+      "Mining operations",
+      "Industrial logistics"
+    ]
+  },
+  "mining-chemicals": {
+    "number": "Service 02",
+    "title": "Mining Chemicals Supply",
+    "lead": "Processing reagents, industrial chemicals and consumables sourced for consistent performance in mineral operations.",
+    "image": "assets/services/service-02-mining-chemicals.webp",
+    "imageAlt": "Sealed mining chemical drums and reagent totes in an industrial warehouse",
+    "description": "We support mineral processing, extraction and refining with chemicals from reputable manufacturers, helping clients maintain stable supply and reliable plant performance.",
+    "points": [
+      "Flotation reagents, collectors and frothers",
+      "Leaching agents and processing chemicals",
+      "Chemical handling solutions",
+      "Industrial consumables",
+      "Reagents including PAX, SIPX, SIBX, soda ash and caustic soda"
+    ],
+    "tags": [
+      "Mineral processing",
+      "Reagents",
+      "Industrial chemicals",
+      "Quality supply"
+    ]
+  },
+  "hazardous-waste": {
+    "number": "Service 03",
+    "title": "Hazardous Waste Management",
+    "lead": "Regulated collection, transport, treatment and controlled disposal for hazardous industrial waste.",
+    "image": "assets/services/service-03-hazardous-waste.webp",
+    "imageAlt": "Hazardous waste containers staged on a lined containment pad at an industrial facility",
+    "description": "Flaxio helps industrial sites manage hazardous waste responsibly through safe collection, stabilisation, movement and disposal practices aligned with environmental expectations.",
+    "points": [
+      "Hazardous waste collection and handling",
+      "Regulated waste transportation",
+      "Treatment, neutralisation and controlled disposal",
+      "Mine waste and tailings management",
+      "Industrial site clean-up and remediation"
+    ],
+    "tags": [
+      "Waste collection",
+      "Controlled disposal",
+      "Environmental compliance",
+      "Site remediation"
+    ]
+  },
+  "mining-equipment": {
+    "number": "Service 04",
+    "title": "Mining Equipment Supply",
+    "lead": "Durable equipment, tools and consumables for mining, construction and industrial operations.",
+    "image": "assets/services/service-04-mining-equipment.webp",
+    "imageAlt": "Mining drills, pumps and heavy-duty equipment staged in a mine supply yard",
+    "description": "We source practical, site-ready equipment for demanding environments, with support for spares, accessories and repeat supply requirements.",
+    "points": [
+      "Drilling machines, tools and accessories",
+      "Conveyors, pumps and crushers",
+      "Mining drilling tools and consumables",
+      "Safety gear and site equipment",
+      "Equipment sourcing and after-sales support"
+    ],
+    "tags": [
+      "Heavy equipment",
+      "Drilling tools",
+      "Pumps and conveyors",
+      "After-sales support"
+    ]
+  },
+  "electrical-equipment": {
+    "number": "Service 05",
+    "title": "Electrical Equipment Supply",
+    "lead": "Industrial electrical components and systems that support safety, efficiency and dependable site performance.",
+    "image": "assets/services/service-05-electrical-equipment.webp",
+    "imageAlt": "Switchgear cabinets, transformers and industrial electrical components in a clean supply room",
+    "description": "Flaxio supplies electrical equipment for industrial and commercial applications, from power distribution parts to fittings and site consumables.",
+    "points": [
+      "Transformers and switchgear",
+      "Power distribution units and control panels",
+      "Industrial and commercial lighting systems",
+      "Electrical cables, fittings and accessories",
+      "Safety electrical products and mining consumables"
+    ],
+    "tags": [
+      "Switchgear",
+      "Control panels",
+      "Cables and fittings",
+      "Power distribution"
+    ]
+  },
+  "ppe": {
+    "number": "Service 06",
+    "title": "Supply of PPE",
+    "lead": "Protective equipment for teams working around chemicals, mining sites and industrial environments.",
+    "image": "assets/services/service-06-ppe.webp",
+    "imageAlt": "Hard hats, gloves, respirators, protective clothing and safety gear arranged on shelves",
+    "description": "We supply PPE that helps clients protect workers, standardise safety readiness and keep compliant stock available for daily operations.",
+    "points": [
+      "Protective suits and coveralls",
+      "Gloves, masks and respirators",
+      "Helmets, eyewear and hearing protection",
+      "High-visibility safety gear",
+      "Site-ready safety packs"
+    ],
+    "tags": [
+      "Worker safety",
+      "Respirators",
+      "Protective clothing",
+      "Site readiness"
+    ]
+  },
+  "valves-flanges": {
+    "number": "Service 07",
+    "title": "Industrial Valves & Flanges",
+    "lead": "Valves, flanges and pipe components for fluid control, pressure regulation and heavy industrial systems.",
+    "image": "assets/services/service-07-valves-flanges.webp",
+    "imageAlt": "Large industrial valves, flanges and pipe fittings arranged in a workshop",
+    "description": "We supply durable components for mining, commercial, infrastructure and industrial systems where flow control and reliability matter.",
+    "points": [
+      "Fluid control and pressure-regulation valves",
+      "Industrial flanges and pipe connections",
+      "Water and fuel system valves",
+      "Valves for heavy industrial operations",
+      "Sourced to industry standards for durability"
+    ],
+    "tags": [
+      "Fluid control",
+      "Pipe systems",
+      "Pressure regulation",
+      "Durable components"
+    ]
+  },
+  "construction-materials": {
+    "number": "Service 08",
+    "title": "Construction Material Supply",
+    "lead": "Core building materials supplied with quality assurance and practical logistics support.",
+    "image": "assets/services/service-08-construction-materials.webp",
+    "imageAlt": "Construction materials including cement bags, steel rebar and roofing sheets in a supply yard",
+    "description": "Flaxio supports residential, commercial and industrial projects with reliable construction material sourcing and delivery.",
+    "points": [
+      "Cement, steel and aggregates",
+      "Roofing materials and paints",
+      "Structural components",
+      "Quality-assured supply",
+      "Timely delivery for project timelines"
+    ],
+    "tags": [
+      "Cement and steel",
+      "Roofing",
+      "Aggregates",
+      "Project delivery"
+    ]
+  },
+  "laboratory-chemicals": {
+    "number": "Service 09",
+    "title": "Laboratory Chemicals Supply",
+    "lead": "High-grade laboratory chemicals, reagents and testing supplies for quality-control environments.",
+    "image": "assets/services/service-09-laboratory-chemicals.webp",
+    "imageAlt": "Laboratory reagent bottles, sample vials and testing equipment on a clean lab bench",
+    "description": "We supply chemicals for testing, analysis and quality control across mining, environmental, educational and manufacturing laboratories.",
+    "points": [
+      "Analytical reagents and laboratory chemicals",
+      "Reagents for mineral testing and assay work",
+      "Environmental testing chemicals",
+      "Quality-control and calibration supplies",
+      "Purity and safety-focused sourcing"
+    ],
+    "tags": [
+      "Reagents",
+      "Assay work",
+      "Quality control",
+      "Testing supplies"
+    ]
+  },
+  "general-hardware": {
+    "number": "Service 10",
+    "title": "General Hardware Supply",
+    "lead": "Tools, fittings, fasteners and general consumables for maintenance, construction and industrial work.",
+    "image": "assets/services/service-10-general-hardware.webp",
+    "imageAlt": "Organized industrial hardware shelves with tools, fasteners and fittings",
+    "description": "Flaxio supplies reliable general hardware that helps operations keep maintenance work moving and reduce avoidable downtime.",
+    "points": [
+      "Hand tools and power tools",
+      "Fasteners, fixings and fittings",
+      "Plumbing materials and accessories",
+      "Safety wear and general consumables",
+      "Competitive sourcing for repeat supply"
+    ],
+    "tags": [
+      "Tools",
+      "Fasteners",
+      "Maintenance",
+      "Consumables"
+    ]
+  },
+  "fire-extinguishers": {
+    "number": "Service 11",
+    "title": "Fire Extinguishers Supply",
+    "lead": "Fire extinguishers and safety equipment for mines, industrial facilities, offices and commercial sites.",
+    "image": "assets/services/service-11-fire-extinguishers.webp",
+    "imageAlt": "Rows of portable fire extinguishers and fire safety equipment in an industrial safety room",
+    "description": "We supply fire-safety products that help clients protect people, equipment and facilities while supporting safety standards.",
+    "points": [
+      "Portable extinguishers including CO2, dry powder, foam and water",
+      "Refills, servicing and replacement units",
+      "Fire blankets, hoses and safety accessories",
+      "Signage, mounting brackets and site-ready delivery",
+      "Support for industrial and office environments"
+    ],
+    "tags": [
+      "Fire safety",
+      "Extinguishers",
+      "Refills",
+      "Site compliance"
+    ]
+  }
+}
